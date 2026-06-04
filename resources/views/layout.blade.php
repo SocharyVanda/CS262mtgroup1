@@ -117,53 +117,76 @@
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-16">
 
     <nav class="bg-surface dark:bg-inverse-surface shadow-sm fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto">
-    <div class="flex items-center gap-sm">
-        <span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">STEMBODIAN</span>
-    </div>
-    <div class="hidden md:flex gap-md">
-        <a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-bold text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-t-sm" href="{{ url('') }}">Home</a>
-        <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-sm pb-1" href="#">Bookmarks</a>
-        <a class="nav-item nav-link link-body-emphasis" href="/signup">sign up</a>
-
-        <div class="btn-group">
-        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Danger
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">SCIENCE</a></li>
-            <li><a class="dropdown-item" href="#">TECHNOLOGY</a></li>
-            <li><a class="dropdown-item" href="#">ENGINEERING</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">MATHEMATICS</a></li>
-        </ul>
+        <div class="flex items-center gap-sm">
+            <span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">STEMBODIAN</span>
         </div>
+        <div class="hidden md:flex gap-md">
+            <a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-bold text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-t-sm" href="{{ url('') }}">Home</a>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-sm pb-1" href="#">Bookmarks</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/signup">sign up</a>
 
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Danger
+                </button>
+<ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{{ url('http://cs262mtgroup1.test/science ') }}">SCIENCE</a></li>
+    <li><a class="dropdown-item" href="{{ url('http://cs262mtgroup1.test/technology') }}">TECHNOLOGY</a></li>
+    <li><a class="dropdown-item" href="{{ url('http://cs262mtgroup1.test/engineering') }}">ENGINEERING</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="{{ url('http://cs262mtgroup1.test/mathematics') }}">MATHEMATICS</a></li>
+</ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    @hasSection('page-title')
+    <div class="page" id="page-@yield('page-id', 'generic')">
+        <div class="cat-page-header py-4 bg-surface-container border-b border-outline-variant">
+            <div class="container mx-auto px-gutter">
+                <div class="cat-page-title-row flex items-center gap-md">
+                    <span class="cat-big-icon text-4xl">@yield('page-icon', '🔬')</span>
+                    <div>
+                        <div class="cat-page-title text-headline-md font-bold" style="color: var(--@yield('page-color-var', 'primary'))">
+                            @yield('page-title')
+                        </div>
+                        <div class="cat-page-desc text-secondary text-body-md">
+                            @yield('page-description')
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</nav>
-
-    @yield('content')
-
-<footer>
-<div class="card">
-  <div class="card-header">
-    STEMBODIA
-  </div>
-  <div class="card-body">
-    <figure>
-      <blockquote class="blockquote">
-        <p>A well-known quote, contained in a blockquote element.</p>
-      </blockquote>
-      <figcaption class="blockquote-footer">
-        Someone famous in <cite title="Source Title">Source Title</cite>
-      </figcaption>
-    </figure>
-  </div>
-</div>
-</footer>
+    @endif
 
 
 
 
+
+    <main class="flex-1">
+        @yield('content')
+    </main>
+
+    <footer class="mt-auto">
+        <div class="card rounded-none border-x-0 border-b-0">
+            <div class="card-header">
+                STEMBODIA
+            </div>
+            <div class="card-body">
+                <figure>
+                    <blockquote class="blockquote">
+                        <p>A well-known quote, contained in a blockquote element.</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        Someone famous in <cite title="Source Title">Source Title</cite>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

@@ -34,3 +34,19 @@ Route::post('/create-post', [PostController::class, 'createPost']);
 Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
 Route::put('/edit-post/{post}', [PostController::class, 'updatePost']);
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
+
+Route::get('/science', function () {
+    return view('science');
+});
+
+Route::get('/technology', function () {
+    return view('technology');
+});
+
+Route::get('/engineering', function () {
+    return view('engineering');
+});
+
+Route::get('/mathematics', function () {
+    return view('mathematics');
+});

@@ -36,7 +36,7 @@
 <h2 class="text-headline-md font-headline-md text-on-surface mb-md">Explore Subjects</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
 <!-- Science -->
-<a class="group relative overflow-hidden rounded-xl bg-surface-bright border border-outline-variant p-md flex flex-col justify-between h-48 ambient-shadow transition-all duration-300 items-center" href="#">
+<a class="group relative overflow-hidden rounded-xl bg-surface-bright border border-outline-variant p-md flex flex-col justify-between h-48 ambient-shadow transition-all duration-300 items-center" href="http://cs262mtgroup1.test/science">
 
 <div class="bg-primary/10 w-12 h-12 flex items-center justify-center rounded-lg mb-4 group-hover:bg-primary/20 transition-colors">
 <span class="material-symbols-outlined text-primary">science</span>
@@ -47,7 +47,7 @@
 </div>
 </a>
 <!-- Technology -->
-<a class="group relative overflow-hidden rounded-xl bg-surface-bright border border-outline-variant p-md flex flex-col justify-between h-48 ambient-shadow transition-all duration-300 items-center" href="#">
+<a class="group relative overflow-hidden rounded-xl bg-surface-bright border border-outline-variant p-md flex flex-col justify-between h-48 ambient-shadow transition-all duration-300 items-center" href="http://cs262mtgroup1.test/technology">
 
 <div class="bg-tertiary/10 w-12 h-12 flex items-center justify-center rounded-lg mb-4 group-hover:bg-tertiary/20 transition-colors">
 <span class="material-symbols-outlined text-tertiary">devices</span>
@@ -58,7 +58,7 @@
 </div>
 </a>
 <!-- Engineering -->
-<a class="group relative overflow-hidden rounded-xl bg-surface-bright border border-outline-variant p-md flex flex-col justify-between h-48 ambient-shadow transition-all duration-300 items-center" href="#">
+<a class="group relative overflow-hidden rounded-xl bg-surface-bright border border-outline-variant p-md flex flex-col justify-between h-48 ambient-shadow transition-all duration-300 items-center" href="http://cs262mtgroup1.test/engineering">
 
 <div class="bg-secondary/10 w-12 h-12 flex items-center justify-center rounded-lg mb-4 group-hover:bg-secondary/20 transition-colors">
 <span class="material-symbols-outlined text-secondary">precision_manufacturing</span>
@@ -69,7 +69,7 @@
 </div>
 </a>
 <!-- Math -->
-<a class="group relative overflow-hidden rounded-xl bg-surface-bright border border-outline-variant p-md flex flex-col justify-between h-48 ambient-shadow transition-all duration-300 items-center" href="#">
+<a class="group relative overflow-hidden rounded-xl bg-surface-bright border border-outline-variant p-md flex flex-col justify-between h-48 ambient-shadow transition-all duration-300 items-center" href="http://cs262mtgroup1.test/mathematics">
 
 <div class="bg-on-primary-fixed-variant/10 w-12 h-12 flex items-center justify-center rounded-lg mb-4 group-hover:bg-on-primary-fixed-variant/20 transition-colors">
 <span class="material-symbols-outlined text-on-primary-fixed-variant">calculate</span>
