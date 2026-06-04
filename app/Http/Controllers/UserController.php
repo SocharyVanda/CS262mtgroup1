@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use App\Models\User;
 
 class UserController extends Controller
@@ -13,25 +13,26 @@ class UserController extends Controller
             'email' => ['required', 'email', Rule::unique('users','email')],
             'password' => ['required', 'confirmed', 'min:3', 'max:200']
         ]);
-        $incomingFields['password']=bcrypt($incomingFields['password']);
+        $incomingFields['password'] = bcrypt($incomingFields['password']);
         $user = User::create($incomingFields);
         Auth::login($user);
-        return redirect('/dashboard');
-        //return redirect('/dashboard');
-        //return redirect('/dashboard/?'.$user);
-
+        return redirect('/');
     }
+
     public function login(Request $request){
         $incomingFields = $request->validate([
-            'loginname'=>'required',
-            'loginpassword'=>'required'
+            'loginname' => 'required',
+            'loginpassword' => 'required'
         ]);
-        if(Auth::attempt(['name'=> $incomingFields['loginname'], 'password'=> $incomingFields['loginpassword']])){
+
+        if(Auth::attempt(['name' => $incomingFields['loginname'], 'password' => $incomingFields['loginpassword']])){
             $request->session()->regenerate();
+            return redirect('/dashboard');
         }
-        return redirect('/dashboard');
-        
+
+        return back()->withErrors(['loginname' => 'Invalid username or password.']);
     }
+
     public function logout(){
         Auth::logout();
         return redirect('/');
