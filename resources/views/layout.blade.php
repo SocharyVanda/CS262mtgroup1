@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>@yield('title', 'STEM Cambodia')</title>
+    <title>@yield('title', 'STEMBODIAN')</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Inter:wght@400;600&family=Noto+Sans+Khmer:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -118,16 +118,51 @@
 
     <nav class="bg-surface dark:bg-inverse-surface shadow-sm fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto">
     <div class="flex items-center gap-sm">
-        <span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">STEM Cambodia</span>
+        <span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">STEMBODIAN</span>
     </div>
     <div class="hidden md:flex gap-md">
         <a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-bold text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-t-sm" href="{{ url('') }}">Home</a>
         <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-sm pb-1" href="#">Bookmarks</a>
         <a class="nav-item nav-link link-body-emphasis" href="/signup">sign up</a>
+
+        <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Danger
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">SCIENCE</a></li>
+            <li><a class="dropdown-item" href="#">TECHNOLOGY</a></li>
+            <li><a class="dropdown-item" href="#">ENGINEERING</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">MATHEMATICS</a></li>
+        </ul>
+        </div>
+
     </div>
 </nav>
 
     @yield('content')
+
+<footer>
+<div class="card">
+  <div class="card-header">
+    STEMBODIA
+  </div>
+  <div class="card-body">
+    <figure>
+      <blockquote class="blockquote">
+        <p>A well-known quote, contained in a blockquote element.</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        Someone famous in <cite title="Source Title">Source Title</cite>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+</footer>
+
+
+
 
 
 </body>
