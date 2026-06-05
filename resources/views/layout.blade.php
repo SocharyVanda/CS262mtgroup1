@@ -277,9 +277,7 @@
 
         <div class="nav-links">
             <a class="nav-link active" href="{{ url('') }}">Home</a>
-            <a class="nav-link" href="/aboutus">About us</a>
             <a class="nav-link" href="/news">News</a>
-            <a class="nav-link" href="/bookmarks">Bookmarks</a>
             <a class="nav-link" href="/signup">Sign up</a>
             <a class="nav-btn" href="/dashboard">Dashboard →</a>
         </div>
@@ -300,7 +298,6 @@
             <div class="footer-col">
                 <h4>Navigate</h4>
                 <a href="/">Home</a>
-                <a href="/aboutus">About us</a>
                 <a href="/news">News & events</a>
                 <a href="/bookmarks">Bookmarks</a>
             </div>
