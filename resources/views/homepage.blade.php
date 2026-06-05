@@ -992,48 +992,52 @@
     </section>
 
     <!-- ══ PROGRAMS ══ -->
-    <section class="section">
-        <div class="section-inner">
-            <span class="label">Programs</span>
-            <h2 class="h2">What we <em>offer</em></h2>
-            <div class="programs-grid">
-                <div class="prog-card">
-                    <div class="prog-badge">Curriculum</div>
-                    <h3>School integration program</h3>
-                    <p>Fully-aligned STEM curricula embedded into Cambodia's national school system, with trained teachers
-                        and localized content for grades 7–12.</p>
-                    <div class="prog-meta">
-                        <div class="prog-meta-item"><span>Grade level</span><strong>7–12</strong></div>
-                        <div class="prog-meta-item"><span>Mode</span><strong>Hybrid</strong></div>
-                        <div class="prog-meta-item"><span>Duration</span><strong>Year-round</strong></div>
-                    </div>
-                </div>
-                <div class="prog-card">
-                    <div class="prog-badge">Workshop</div>
-                    <h3>Hands-on innovation labs</h3>
-                    <p>Weekend and holiday programs where students build robots, design apps, run chemistry experiments, and
-                        present to industry mentors.</p>
-                    <div class="prog-meta">
-                        <div class="prog-meta-item"><span>Frequency</span><strong>Bi-monthly</strong></div>
-                        <div class="prog-meta-item"><span>Mode</span><strong>In-person</strong></div>
-                        <div class="prog-meta-item"><span>Ages</span><strong>12–18</strong></div>
-                    </div>
-                </div>
-                <div class="prog-card">
-                    <div class="prog-badge">Digital</div>
-                    <h3>Online learning platform</h3>
-                    <p>Self-paced modules, video lectures, quizzes, and project-based assessments — available 24/7 in Khmer
-                        and English for any device.</p>
-                    <div class="prog-meta">
-                        <div class="prog-meta-item"><span>Access</span><strong>Free</strong></div>
-                        <div class="prog-meta-item"><span>Language</span><strong>KH / EN</strong></div>
-                        <div class="prog-meta-item"><span>Modules</span><strong>500+</strong></div>
-                    </div>
+<section class="section">
+    <div class="section-inner">
+        <span class="label">Community</span>
+        <h2 class="h2">What we <em>offer</em></h2>
+
+        <div class="programs-grid">
+
+            <div class="prog-card">
+                <div class="prog-badge">Networking</div>
+                <h3>Tech community meetups</h3>
+                <p>Connect with developers, designers, entrepreneurs, and tech enthusiasts through regular networking events, knowledge-sharing sessions, and community gatherings across Cambodia.</p>
+
+                <div class="prog-meta">
+                    <div class="prog-meta-item"><span>Audience</span><strong>All Levels</strong></div>
+                    <div class="prog-meta-item"><span>Format</span><strong>Hybrid</strong></div>
+                    <div class="prog-meta-item"><span>Schedule</span><strong>Monthly</strong></div>
                 </div>
             </div>
-        </div>
-    </section>
 
+            <div class="prog-card">
+                <div class="prog-badge">Events</div>
+                <h3>Workshops & hackathons</h3>
+                <p>Participate in hands-on coding workshops, startup challenges, hackathons, and collaborative projects designed to strengthen practical skills and encourage innovation.</p>
+
+                <div class="prog-meta">
+                    <div class="prog-meta-item"><span>Frequency</span><strong>Regular</strong></div>
+                    <div class="prog-meta-item"><span>Mode</span><strong>In-person</strong></div>
+                    <div class="prog-meta-item"><span>Focus</span><strong>Tech & Innovation</strong></div>
+                </div>
+            </div>
+
+            <div class="prog-card">
+                <div class="prog-badge">Resources</div>
+                <h3>Learning & career growth</h3>
+                <p>Access curated learning resources, mentorship opportunities, career guidance, job postings, and industry insights to support your journey in Cambodia's growing tech ecosystem.</p>
+
+                <div class="prog-meta">
+                    <div class="prog-meta-item"><span>Access</span><strong>Open</strong></div>
+                    <div class="prog-meta-item"><span>Language</span><strong>KH / EN</strong></div>
+                    <div class="prog-meta-item"><span>Support</span><strong>Mentorship</strong></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <!-- ══ PARTNERS ══ -->
     <section style="padding: 2.5rem 2rem; border-top: 1px solid var(--border);">
