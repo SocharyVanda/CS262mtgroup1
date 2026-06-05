@@ -1038,48 +1038,7 @@
         </div>
     </section>
 
-    <!-- ══ PROGRAMS ══ -->
-    <section class="section">
-        <div class="section-inner">
-            <span class="label">Programs</span>
-            <h2 class="h2">What we <em>offer</em></h2>
-            <div class="programs-grid">
-                <div class="prog-card">
-                    <div class="prog-badge">Curriculum</div>
-                    <h3>School integration program</h3>
-                    <p>Fully-aligned STEM curricula embedded into Cambodia's national school system, with trained teachers
-                        and localized content for grades 7–12.</p>
-                    <div class="prog-meta">
-                        <div class="prog-meta-item"><span>Grade level</span><strong>7–12</strong></div>
-                        <div class="prog-meta-item"><span>Mode</span><strong>Hybrid</strong></div>
-                        <div class="prog-meta-item"><span>Duration</span><strong>Year-round</strong></div>
-                    </div>
-                </div>
-                <div class="prog-card">
-                    <div class="prog-badge">Workshop</div>
-                    <h3>Hands-on innovation labs</h3>
-                    <p>Weekend and holiday programs where students build robots, design apps, run chemistry experiments, and
-                        present to industry mentors.</p>
-                    <div class="prog-meta">
-                        <div class="prog-meta-item"><span>Frequency</span><strong>Bi-monthly</strong></div>
-                        <div class="prog-meta-item"><span>Mode</span><strong>In-person</strong></div>
-                        <div class="prog-meta-item"><span>Ages</span><strong>12–18</strong></div>
-                    </div>
-                </div>
-                <div class="prog-card">
-                    <div class="prog-badge">Digital</div>
-                    <h3>Online learning platform</h3>
-                    <p>Self-paced modules, video lectures, quizzes, and project-based assessments — available 24/7 in Khmer
-                        and English for any device.</p>
-                    <div class="prog-meta">
-                        <div class="prog-meta-item"><span>Access</span><strong>Free</strong></div>
-                        <div class="prog-meta-item"><span>Language</span><strong>KH / EN</strong></div>
-                        <div class="prog-meta-item"><span>Modules</span><strong>500+</strong></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- ══ CTA ══ -->
     <section class="section section-soft">
