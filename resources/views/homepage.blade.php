@@ -3,195 +3,190 @@
 @section('content')
 
     <style>
-        /* ── RESET OVERRIDES ── */
-        .section-label {
-            font-family: var(--font-mono);
+        /* ── SHARED ── */
+        .label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--mono);
             font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.2em;
+            font-weight: 500;
+            color: var(--blue);
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--clr-accent);
-            display: block;
-            margin-bottom: 0.75rem;
+            margin-bottom: .75rem;
         }
 
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(1.9rem, 3.5vw, 2.75rem);
-            font-weight: 800;
-            color: var(--clr-text);
-            line-height: 1.15;
+        .label::before {
+            content: '';
+            width: 16px;
+            height: 1px;
+            background: var(--blue);
+            display: inline-block;
+        }
+
+        .h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.2;
             letter-spacing: -0.02em;
-            margin-bottom: 1rem;
+            margin-bottom: .85rem;
         }
 
-        .section-title .accent {
-            color: var(--clr-accent);
+        .h2 em {
+            font-style: normal;
+            color: var(--blue);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #fff;
+            background: var(--blue);
+            text-decoration: none;
+            padding: 9px 20px;
+            border-radius: var(--r);
+            transition: opacity .15s;
+        }
+
+        .btn-primary:hover {
+            opacity: .85;
+            color: #fff;
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13.5px;
+            font-weight: 400;
+            color: var(--text-2);
+            text-decoration: none;
+            padding: 9px 18px;
+            border-radius: var(--r);
+            border: 1px solid var(--border-md);
+            transition: border-color .15s, color .15s;
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+            border-color: #9098a3;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+        }
+
+        .section-soft {
+            background: var(--bg-soft);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         /* ── HERO ── */
         .hero {
-            min-height: calc(100svh - var(--nav-h));
-            display: flex;
-            align-items: center;
-            padding: 4rem 2.5rem;
+            padding: 6rem 2rem 5rem;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
             position: relative;
             overflow: hidden;
         }
 
-        /* Soft background glow */
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 230, 118, 0.06) 0%, transparent 65%);
-            top: 50%;
-            right: 5%;
-            transform: translateY(-50%);
-            pointer-events: none;
-        }
-
         .hero-inner {
-            max-width: 1100px;
+            max-width: var(--max-w);
             margin: 0 auto;
-            width: 100%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 420px;
             gap: 4rem;
             align-items: center;
-            min-width: 0;
-        }
-
-        .hero-left {
-            min-width: 0;
         }
 
         .hero-eyebrow {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-family: var(--font-mono);
+            font-family: var(--mono);
             font-size: 11px;
-            color: var(--clr-accent);
-            letter-spacing: 0.1em;
+            color: var(--blue);
+            background: var(--blue-lt);
+            border: 1px solid #c7d9f8;
+            padding: 4px 12px;
+            border-radius: 100px;
+            letter-spacing: 0.06em;
             margin-bottom: 1.5rem;
             opacity: 0;
-            animation: fadeUp 0.5s 0.1s ease forwards;
-        }
-
-        .hero-eyebrow-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--clr-accent);
-            animation: pulse-dot 2s infinite;
+            animation: up .5s .05s forwards;
         }
 
         .hero-h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-            font-weight: 800;
-            line-height: 1.08;
+            font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+            font-weight: 600;
+            line-height: 1.1;
             letter-spacing: -0.03em;
-            color: var(--clr-text);
+            color: var(--text);
             margin-bottom: 1.25rem;
             opacity: 0;
-            animation: fadeUp 0.5s 0.2s ease forwards;
+            animation: up .5s .15s forwards;
         }
 
-        .hero-h1 .gradient-text {
-            background: linear-gradient(135deg, var(--clr-accent) 0%, var(--clr-blue) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .hero-h1 .blue {
+            color: var(--blue);
         }
 
         .hero-sub {
-            font-size: 15px;
-            color: var(--clr-text2);
-            line-height: 1.85;
+            font-size: 15.5px;
+            color: var(--text-2);
+            line-height: 1.75;
             max-width: 480px;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             opacity: 0;
-            animation: fadeUp 0.5s 0.3s ease forwards;
+            animation: up .5s .25s forwards;
         }
 
-        .hero-actions {
+        .hero-ctas {
             display: flex;
-            gap: 0.85rem;
-            align-items: center;
+            gap: .75rem;
             flex-wrap: wrap;
             opacity: 0;
-            animation: fadeUp 0.5s 0.4s ease forwards;
-        }
-
-        .btn-primary {
-            font-family: var(--font-body);
-            font-size: 13px;
-            font-weight: 600;
-            color: #050c14;
-            background: var(--clr-accent);
-            text-decoration: none;
-            padding: 0.7rem 1.6rem;
-            border-radius: 6px;
-            letter-spacing: 0.01em;
-            transition: opacity 0.2s, box-shadow 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .btn-primary:hover {
-            color: #050c14;
-            opacity: 0.85;
-            box-shadow: 0 0 24px rgba(0, 230, 118, 0.3);
-        }
-
-        .btn-ghost {
-            font-family: var(--font-body);
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--clr-text2);
-            text-decoration: none;
-            padding: 0.7rem 1.4rem;
-            border-radius: 6px;
-            border: 1px solid var(--clr-border);
-            transition: color 0.2s, border-color 0.2s;
-        }
-
-        .btn-ghost:hover {
-            color: var(--clr-text);
-            border-color: rgba(56, 189, 248, 0.35);
+            animation: up .5s .35s forwards;
         }
 
         .hero-stats {
             display: flex;
             gap: 2.5rem;
-            margin-top: 3rem;
+            margin-top: 2.5rem;
             padding-top: 2rem;
-            border-top: 1px solid var(--clr-border);
+            border-top: 1px solid var(--border);
             opacity: 0;
-            animation: fadeUp 0.5s 0.5s ease forwards;
+            animation: up .5s .45s forwards;
         }
 
         .h-stat-val {
-            font-family: var(--font-mono);
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--clr-text);
+            font-family: var(--mono);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text);
             line-height: 1;
             margin-bottom: 4px;
         }
 
-        .h-stat-val .a {
-            color: var(--clr-accent);
+        .h-stat-val b {
+            color: var(--blue);
+            font-weight: 500;
         }
 
         .h-stat-lbl {
             font-size: 12px;
-            color: var(--clr-text2);
+            color: var(--text-3);
         }
 
         /* Hero visual */
@@ -200,49 +195,63 @@
             justify-content: center;
             align-items: center;
             opacity: 0;
-            animation: fadeIn 0.8s 0.6s ease forwards;
+            animation: fade .8s .5s forwards;
         }
 
-        .hero-img-wrap {
-            width: 100%;
-            max-width: 400px;
-            aspect-ratio: 1;
+        .hero-visual-box {
+            width: 340px;
+            height: 340px;
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
+            overflow: hidden;
         }
 
-        .hero-img-wrap img {
-            width: 100%;
-            height: 100%;
+        .hero-visual-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: .5;
+        }
+
+        .hero-visual-box img {
+            width: 200px;
+            height: 200px;
             object-fit: contain;
-            filter: drop-shadow(0 0 40px rgba(0, 230, 118, 0.18));
-            animation: floatY 5s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+            animation: floatY 4s ease-in-out infinite;
         }
 
         /* ── TICKER ── */
-        .ticker-bar {
-            background: var(--clr-surface);
-            border-top: 1px solid var(--clr-border);
-            border-bottom: 1px solid var(--clr-border);
-            height: 40px;
+        .ticker {
+            height: 38px;
+            background: var(--blue);
             display: flex;
             align-items: center;
             overflow: hidden;
-            position: relative;
-            z-index: 1;
         }
 
-        .ticker-pill {
+        .ticker-label {
             flex-shrink: 0;
-            font-family: var(--font-mono);
+            font-family: var(--mono);
             font-size: 10px;
-            font-weight: 700;
-            color: #050c14;
-            background: var(--clr-accent);
-            padding: 0 1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, .7);
+            padding: 0 1.25rem;
+            border-right: 1px solid rgba(255, 255, 255, .2);
             height: 100%;
             display: flex;
             align-items: center;
-            letter-spacing: 0.12em;
+            letter-spacing: .12em;
         }
 
         .ticker-scroll {
@@ -254,45 +263,41 @@
             display: flex;
             gap: 3rem;
             white-space: nowrap;
-            animation: ticker 32s linear infinite;
+            animation: ticker 30s linear infinite;
             padding-left: 2rem;
         }
 
         .ticker-item {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--clr-text2);
-            letter-spacing: 0.04em;
+            font-size: 12px;
+            color: rgba(255, 255, 255, .9);
             display: flex;
             align-items: center;
             gap: 8px;
+            font-weight: 400;
         }
 
         .ticker-item::before {
             content: '·';
-            color: var(--clr-accent);
-            font-size: 16px;
-            line-height: 1;
+            font-size: 18px;
+            opacity: .6;
         }
 
         /* ── STATS BAR ── */
         .stats-bar {
-            background: var(--clr-surface);
-            border-bottom: 1px solid var(--clr-border);
-            position: relative;
-            z-index: 1;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
         }
 
         .stats-bar-inner {
-            max-width: 1100px;
+            max-width: var(--max-w);
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
         }
 
         .stat-cell {
-            padding: 2.25rem 2rem;
-            border-right: 1px solid var(--clr-border);
+            padding: 2rem 1.75rem;
+            border-right: 1px solid var(--border);
         }
 
         .stat-cell:last-child {
@@ -300,85 +305,67 @@
         }
 
         .stat-num {
-            font-family: var(--font-mono);
-            font-size: 2.4rem;
-            font-weight: 700;
+            font-family: var(--mono);
+            font-size: 2rem;
+            font-weight: 500;
             line-height: 1;
             margin-bottom: 6px;
-            color: var(--clr-text);
-        }
-
-        .stat-num.green {
-            color: var(--clr-accent);
         }
 
         .stat-num.blue {
-            color: var(--clr-blue);
+            color: var(--blue);
+        }
+
+        .stat-num.green {
+            color: var(--green);
         }
 
         .stat-num.amber {
-            color: #f59e0b;
+            color: var(--amber);
         }
 
         .stat-num.purple {
-            color: var(--clr-purple);
+            color: var(--purple);
         }
 
         .stat-desc {
             font-size: 13px;
-            color: var(--clr-text2);
+            color: var(--text-2);
             margin-bottom: 4px;
         }
 
         .stat-note {
-            font-family: var(--font-mono);
+            font-family: var(--mono);
             font-size: 10px;
-            color: var(--clr-muted);
-            letter-spacing: 0.06em;
+            color: var(--text-3);
+            letter-spacing: .04em;
         }
 
         /* ── SUBJECTS ── */
-        .subjects-section {
-            padding: 6rem 2.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .subjects-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 2.5rem;
-        }
-
         .subjects-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1px;
-            background: var(--clr-border);
+            background: var(--border);
+            border: 1px solid var(--border);
             border-radius: 10px;
             overflow: hidden;
+            margin-top: 2rem;
         }
 
         .subj-card {
-            background: var(--clr-surface);
-            padding: 2rem 1.75rem 2.5rem;
+            background: var(--bg);
+            padding: 1.75rem 1.5rem 2rem;
             text-decoration: none;
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1rem;
             position: relative;
-            overflow: hidden;
-            transition: background 0.25s;
+            transition: background .2s;
         }
 
         .subj-card:hover {
-            background: var(--clr-surface2);
+            background: var(--bg-soft);
         }
 
         .subj-card::after {
@@ -390,100 +377,88 @@
             height: 2px;
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.3s ease;
+            transition: transform .25s;
         }
 
         .subj-card:hover::after {
             transform: scaleX(1);
         }
 
-        .subj-card.c-sci::after {
-            background: var(--clr-accent);
+        .subj-card.s-sci::after {
+            background: var(--green);
         }
 
-        .subj-card.c-tech::after {
-            background: var(--clr-blue);
+        .subj-card.s-tech::after {
+            background: var(--blue);
         }
 
-        .subj-card.c-eng::after {
-            background: #f59e0b;
+        .subj-card.s-eng::after {
+            background: var(--amber);
         }
 
-        .subj-card.c-math::after {
-            background: var(--clr-purple);
+        .subj-card.s-math::after {
+            background: var(--purple);
         }
 
         .subj-icon {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
         }
 
-        .c-sci .subj-icon {
-            background: rgba(0, 230, 118, 0.1);
-            color: var(--clr-accent);
+        .s-sci .subj-icon {
+            background: var(--green-lt);
+            color: var(--green);
         }
 
-        .c-tech .subj-icon {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--clr-blue);
+        .s-tech .subj-icon {
+            background: var(--blue-lt);
+            color: var(--blue);
         }
 
-        .c-eng .subj-icon {
-            background: rgba(245, 158, 11, 0.1);
-            color: #f59e0b;
+        .s-eng .subj-icon {
+            background: var(--amber-lt);
+            color: var(--amber);
         }
 
-        .c-math .subj-icon {
-            background: rgba(167, 139, 250, 0.1);
-            color: var(--clr-purple);
+        .s-math .subj-icon {
+            background: var(--purple-lt);
+            color: var(--purple);
         }
 
         .subj-title {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--clr-text);
-            margin-bottom: 0.4rem;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
         }
 
         .subj-desc {
-            font-size: 13px;
-            color: var(--clr-text2);
-            line-height: 1.65;
+            font-size: 12.5px;
+            color: var(--text-2);
+            line-height: 1.6;
+            flex: 1;
         }
 
         .subj-link {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--clr-muted);
-            letter-spacing: 0.05em;
-            transition: color 0.2s;
+            font-size: 12px;
+            color: var(--text-3);
             margin-top: auto;
+            transition: color .15s;
         }
 
         .subj-card:hover .subj-link {
-            color: var(--clr-text2);
+            color: var(--text-2);
         }
 
         /* ── WHY ── */
-        .why-section {
-            padding: 6rem 2.5rem;
-            background: var(--clr-bg2);
-            border-top: 1px solid var(--clr-border);
-            position: relative;
-            z-index: 1;
-        }
-
         .why-inner {
-            max-width: 1100px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: 320px 1fr;
+            grid-template-columns: 300px 1fr;
             gap: 5rem;
             align-items: start;
         }
@@ -495,207 +470,164 @@
 
         .why-sticky p {
             font-size: 14px;
-            color: var(--clr-text2);
-            line-height: 1.8;
-            margin-top: 0.75rem;
-        }
-
-        .why-list {
-            display: flex;
-            flex-direction: column;
+            color: var(--text-2);
+            line-height: 1.75;
+            margin-top: .6rem;
         }
 
         .why-item {
             display: grid;
-            grid-template-columns: 36px 1fr;
+            grid-template-columns: 32px 1fr;
             gap: 1.25rem;
-            padding: 1.75rem 0;
-            border-bottom: 1px solid var(--clr-border);
-            transition: border-color 0.25s;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
         }
 
         .why-item:first-child {
-            border-top: 1px solid var(--clr-border);
-        }
-
-        .why-item:hover {
-            border-color: rgba(0, 230, 118, 0.2);
+            border-top: 1px solid var(--border);
         }
 
         .why-n {
-            font-family: var(--font-mono);
+            font-family: var(--mono);
             font-size: 11px;
-            color: var(--clr-accent);
-            opacity: 0.45;
-            padding-top: 3px;
-            font-weight: 600;
+            color: var(--text-3);
+            padding-top: 2px;
         }
 
         .why-item h3 {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--clr-text);
-            margin-bottom: 0.45rem;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: .4rem;
         }
 
         .why-item p {
             font-size: 13.5px;
-            color: var(--clr-text2);
-            line-height: 1.75;
+            color: var(--text-2);
+            line-height: 1.7;
         }
 
-        .why-chip {
+        .tag {
             display: inline-block;
-            margin-top: 0.6rem;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--clr-blue);
-            background: rgba(56, 189, 248, 0.07);
-            border: 1px solid rgba(56, 189, 248, 0.18);
-            padding: 0.15rem 0.6rem;
+            margin-top: .5rem;
+            font-size: 10.5px;
+            color: var(--blue);
+            background: var(--blue-lt);
+            border: 1px solid #c7d9f8;
+            padding: 2px 8px;
             border-radius: 100px;
-            letter-spacing: 0.06em;
+            letter-spacing: .04em;
         }
 
         /* ── PROGRAMS ── */
-        .programs-section {
-            padding: 6rem 2.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .programs-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
         .programs-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-top: 2.5rem;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .prog-card {
-            background: var(--clr-surface);
-            border: 1px solid var(--clr-border);
+            background: var(--bg);
+            border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 1.75rem;
-            transition: border-color 0.25s, transform 0.25s;
+            padding: 1.5rem;
+            transition: border-color .2s, transform .2s;
         }
 
         .prog-card:hover {
-            border-color: rgba(0, 230, 118, 0.22);
-            transform: translateY(-3px);
+            border-color: var(--border-md);
+            transform: translateY(-2px);
         }
 
         .prog-badge {
-            font-family: var(--font-mono);
+            font-family: var(--mono);
             font-size: 10px;
-            font-weight: 600;
-            color: var(--clr-accent);
-            letter-spacing: 0.15em;
+            font-weight: 500;
+            color: var(--blue);
+            letter-spacing: .1em;
             text-transform: uppercase;
-            margin-bottom: 0.85rem;
+            margin-bottom: .75rem;
         }
 
         .prog-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--clr-text);
-            margin-bottom: 0.65rem;
-            letter-spacing: -0.01em;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: .5rem;
         }
 
         .prog-card p {
             font-size: 13px;
-            color: var(--clr-text2);
-            line-height: 1.75;
+            color: var(--text-2);
+            line-height: 1.7;
         }
 
         .prog-meta {
             display: flex;
-            gap: 0.75rem;
+            gap: .75rem;
+            flex-wrap: wrap;
             margin-top: 1.25rem;
             padding-top: 1.25rem;
-            border-top: 1px solid var(--clr-border);
-            flex-wrap: wrap;
+            border-top: 1px solid var(--border);
         }
 
         .prog-meta-item {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--clr-muted);
+            font-size: 11px;
+            color: var(--text-3);
             display: flex;
             flex-direction: column;
             gap: 2px;
         }
 
         .prog-meta-item strong {
-            font-size: 12px;
-            color: var(--clr-text2);
+            font-size: 12.5px;
+            color: var(--text-2);
             font-weight: 500;
         }
 
         /* ── CTA ── */
-        .cta-section {
-            padding: 6rem 2.5rem;
-            background: var(--clr-bg2);
-            border-top: 1px solid var(--clr-border);
-            position: relative;
-            z-index: 1;
-        }
-
         .cta-inner {
-            max-width: 1100px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
             align-items: center;
         }
 
-        .cta-card {
-            background: var(--clr-surface);
-            border: 1px solid var(--clr-border);
+        .cta-panel {
+            background: var(--bg);
+            border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 2.5rem;
+            padding: 2rem;
         }
 
-        .cta-card-title {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--clr-text);
-            margin-bottom: 1.5rem;
+        .cta-panel-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 1.25rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .cta-card-title span {
-            width: 8px;
-            height: 8px;
+        .live-dot {
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
-            background: var(--clr-accent);
-            display: inline-block;
-            animation: pulse-dot 2s infinite;
+            background: var(--green);
+            animation: pulse 2s infinite;
         }
 
         .cta-list {
             list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
         }
 
         .cta-list li {
             font-size: 13.5px;
-            color: var(--clr-text2);
-            padding: 0.85rem 0;
-            border-bottom: 1px solid var(--clr-border);
+            color: var(--text-2);
+            padding: .75rem 0;
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -705,106 +637,96 @@
             border-bottom: none;
         }
 
-        .cta-list .val {
-            font-family: var(--font-mono);
+        .val {
+            font-family: var(--mono);
             font-size: 12px;
-            color: var(--clr-accent);
-            font-weight: 600;
+            color: var(--blue);
+            font-weight: 500;
         }
 
         .cta-text p {
             font-size: 15px;
-            color: var(--clr-text2);
-            line-height: 1.8;
-            margin-bottom: 1.75rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
         }
 
-        .cta-checklist {
+        .checklist {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.65rem;
-            margin-bottom: 2rem;
+            gap: .5rem;
+            margin-bottom: 1.75rem;
         }
 
-        .cta-checklist li {
+        .checklist li {
             font-size: 13.5px;
-            color: var(--clr-text2);
+            color: var(--text-2);
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: flex-start;
+            gap: 8px;
         }
 
-        .cta-checklist li::before {
+        .checklist li::before {
             content: '✓';
-            color: var(--clr-accent);
-            font-family: var(--font-mono);
-            font-size: 12px;
-            font-weight: 700;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--green);
+            font-weight: 500;
             flex-shrink: 0;
+            margin-top: 2px;
         }
 
         /* ── PARTNERS ── */
-        .partners-section {
-            padding: 3rem 2.5rem;
-            background: var(--clr-surface);
-            border-top: 1px solid var(--clr-border);
-            position: relative;
-            z-index: 1;
-        }
-
         .partners-inner {
-            max-width: 1100px;
+            max-width: var(--max-w);
             margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 2.5rem;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .partners-lbl {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--clr-muted);
-            letter-spacing: 0.18em;
+            font-size: 11px;
+            color: var(--text-3);
+            font-family: var(--mono);
+            letter-spacing: .1em;
             text-transform: uppercase;
             white-space: nowrap;
         }
 
         .partners-div {
             width: 1px;
-            height: 32px;
-            background: var(--clr-border);
+            height: 28px;
+            background: var(--border);
             flex-shrink: 0;
         }
 
         .partners-row {
             display: flex;
-            gap: 2rem;
-            align-items: center;
+            gap: 1.75rem;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .partner-item {
-            font-family: var(--font-mono);
             font-size: 12px;
-            font-weight: 600;
-            color: var(--clr-muted);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            transition: color 0.2s;
-            cursor: default;
+            font-weight: 500;
+            color: var(--text-3);
+            letter-spacing: .04em;
+            transition: color .15s;
         }
 
         .partner-item:hover {
-            color: var(--clr-text2);
+            color: var(--text-2);
         }
 
         /* ── KEYFRAMES ── */
-        @keyframes fadeUp {
+        @keyframes up {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(16px);
             }
 
             to {
@@ -813,7 +735,7 @@
             }
         }
 
-        @keyframes fadeIn {
+        @keyframes fade {
             from {
                 opacity: 0;
             }
@@ -831,7 +753,7 @@
             }
 
             50% {
-                transform: translateY(-12px);
+                transform: translateY(-10px);
             }
         }
 
@@ -842,6 +764,18 @@
 
             to {
                 transform: translateX(-50%);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .35;
             }
         }
 
@@ -877,16 +811,8 @@
         }
 
         @media (max-width: 640px) {
-            .hero {
-                padding: 3rem 1.5rem;
-            }
-
             .subjects-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .stats-bar-inner {
-                grid-template-columns: 1fr 1fr;
             }
 
             .hero-stats {
@@ -894,14 +820,8 @@
                 gap: 1.25rem;
             }
 
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .partners-inner {
-                flex-wrap: wrap;
+            .section {
+                padding: 3.5rem 1.25rem;
             }
         }
     </style>
@@ -909,31 +829,26 @@
     <!-- ══ HERO ══ -->
     <section class="hero">
         <div class="hero-inner">
-            <div class="hero-left">
-                <div class="hero-eyebrow">
-                    <div class="hero-eyebrow-dot"></div>
-                    Cambodia's leading STEM platform
-                </div>
+            <div>
+                <div class="hero-eyebrow">Cambodia's leading STEM platform</div>
 
                 <h1 class="hero-h1">
-                    Advancing Cambodia's<br>
-                    <span class="gradient-text">Future Through STEM</span>
+                    Advancing Cambodia<br>through <span class="blue">STEM education</span>
                 </h1>
 
                 <p class="hero-sub">
-                    STEMBODIAN equips Cambodian students with critical skills through high-impact
-                    educational programs — driving sustainable progress across science, technology,
-                    engineering, and mathematics.
+                    STEMBODIAN equips Cambodian students with critical skills through high-impact educational programs —
+                    driving sustainable progress across science, technology, engineering, and mathematics.
                 </p>
 
-                <div class="hero-actions">
-                    <a href="/dashboard" class="btn-primary">Start Learning →</a>
-                    <a href="/aboutus" class="btn-ghost">About Us</a>
+                <div class="hero-ctas">
+                    <a href="/dashboard" class="btn-primary">Start learning →</a>
+                    <a href="/aboutus" class="btn-ghost">About us</a>
                 </div>
 
                 <div class="hero-stats">
                     <div>
-                        <div class="h-stat-val">12<span class="a">K+</span></div>
+                        <div class="h-stat-val">12<b>K+</b></div>
                         <div class="h-stat-lbl">Students enrolled</div>
                     </div>
                     <div>
@@ -941,14 +856,14 @@
                         <div class="h-stat-lbl">STEM disciplines</div>
                     </div>
                     <div>
-                        <div class="h-stat-val">98<span class="a">%</span></div>
+                        <div class="h-stat-val">98<b>%</b></div>
                         <div class="h-stat-lbl">Satisfaction rate</div>
                     </div>
                 </div>
             </div>
 
             <div class="hero-visual">
-                <div class="hero-img-wrap">
+                <div class="hero-visual-box">
                     <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/STEM-Mark.png" alt="STEM Cambodia">
                 </div>
             </div>
@@ -956,8 +871,8 @@
     </section>
 
     <!-- ══ TICKER ══ -->
-    <div class="ticker-bar">
-        <div class="ticker-pill">LIVE</div>
+    <div class="ticker">
+        <div class="ticker-label">Updates</div>
         <div class="ticker-scroll">
             <div class="ticker-track">
                 <span class="ticker-item">New: Robotics curriculum launched</span>
@@ -1003,42 +918,40 @@
     </div>
 
     <!-- ══ SUBJECTS ══ -->
-    <section class="subjects-section">
-        <div class="subjects-inner">
-            <div class="section-header">
+    <section class="section">
+        <div class="section-inner">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end;">
                 <div>
-                    <span class="section-label">Explore</span>
-                    <h2 class="section-title">Four pillars of <span class="accent">STEM</span></h2>
+                    <span class="label">Explore</span>
+                    <h2 class="h2">Four pillars of <em>STEM</em></h2>
                 </div>
-                <a href="/dashboard" class="btn-ghost">View all →</a>
+                <a href="/dashboard" class="btn-ghost" style="font-size:13px;">View all →</a>
             </div>
 
             <div class="subjects-grid">
-                <a class="subj-card c-sci" href="/science">
+                <a class="subj-card s-sci" href="/science">
                     <div class="subj-icon">
                         <span class="material-symbols-outlined">science</span>
                     </div>
                     <div>
                         <div class="subj-title">Science</div>
-                        <p class="subj-desc">Explore biology, chemistry, physics, and earth science through experiments and
+                        <p class="subj-desc">Biology, chemistry, physics, and earth science through experiments and
                             real-world phenomena.</p>
                     </div>
                     <span class="subj-link">Explore Science →</span>
                 </a>
-
-                <a class="subj-card c-tech" href="/technology">
+                <a class="subj-card s-tech" href="/technology">
                     <div class="subj-icon">
                         <span class="material-symbols-outlined">devices</span>
                     </div>
                     <div>
                         <div class="subj-title">Technology</div>
-                        <p class="subj-desc">Learn programming, AI, data science, and digital literacy for the modern
-                            tech-driven economy.</p>
+                        <p class="subj-desc">Programming, AI, data science, and digital literacy for the modern tech-driven
+                            economy.</p>
                     </div>
                     <span class="subj-link">Explore Technology →</span>
                 </a>
-
-                <a class="subj-card c-eng" href="/engineering">
+                <a class="subj-card s-eng" href="/engineering">
                     <div class="subj-icon">
                         <span class="material-symbols-outlined">precision_manufacturing</span>
                     </div>
@@ -1049,15 +962,14 @@
                     </div>
                     <span class="subj-link">Explore Engineering →</span>
                 </a>
-
-                <a class="subj-card c-math" href="/mathematics">
+                <a class="subj-card s-math" href="/mathematics">
                     <div class="subj-icon">
                         <span class="material-symbols-outlined">calculate</span>
                     </div>
                     <div>
                         <div class="subj-title">Mathematics</div>
-                        <p class="subj-desc">From algebra and geometry to calculus and statistics — the universal language
-                            of all STEM disciplines.</p>
+                        <p class="subj-desc">Algebra, geometry, calculus, and statistics — the universal language of all
+                            STEM disciplines.</p>
                     </div>
                     <span class="subj-link">Explore Mathematics →</span>
                 </a>
@@ -1066,59 +978,60 @@
     </section>
 
     <!-- ══ WHY STEM ══ -->
-    <section class="why-section">
-        <div class="why-inner">
-            <div class="why-sticky">
-                <span class="section-label">Why it matters</span>
-                <h2 class="section-title">Why choose <span class="accent">STEM?</span></h2>
-                <p>STEM disciplines are the backbone of Cambodia's fastest-growing industries — from digital banking to
-                    agritech.</p>
-            </div>
-
-            <div class="why-list">
-                <div class="why-item">
-                    <div class="why-n">01</div>
-                    <div>
-                        <h3>Critical Thinking</h3>
-                        <p>STEM teaches you to break down complex problems, evaluate evidence, and arrive at logical
-                            conclusions — skills valued in every career and life situation.</p>
-                        <span class="why-chip">Problem Solving</span>
-                    </div>
+    <section class="section section-soft">
+        <div class="section-inner">
+            <div class="why-inner">
+                <div class="why-sticky">
+                    <span class="label">Why it matters</span>
+                    <h2 class="h2">Why choose <em>STEM?</em></h2>
+                    <p>STEM disciplines are the backbone of Cambodia's fastest-growing industries — from digital banking to
+                        agritech.</p>
                 </div>
-                <div class="why-item">
-                    <div class="why-n">02</div>
-                    <div>
-                        <h3>Future-Ready Careers</h3>
-                        <p>By 2030, over 85% of the fastest-growing jobs in Southeast Asia will require STEM competencies.
-                            Start building your edge now.</p>
-                        <span class="why-chip">Career Growth</span>
+                <div>
+                    <div class="why-item">
+                        <div class="why-n">01</div>
+                        <div>
+                            <h3>Critical thinking</h3>
+                            <p>Break down complex problems, evaluate evidence, and arrive at logical conclusions — skills
+                                valued in every career and life situation.</p>
+                            <span class="tag">Problem solving</span>
+                        </div>
                     </div>
-                </div>
-                <div class="why-item">
-                    <div class="why-n">03</div>
-                    <div>
-                        <h3>Innovation Engine</h3>
-                        <p>Empower the next generation to build better technology, sustainable agriculture, clean energy
-                            solutions, and world-class software — rooted in Cambodian context.</p>
-                        <span class="why-chip">Tech Innovation</span>
+                    <div class="why-item">
+                        <div class="why-n">02</div>
+                        <div>
+                            <h3>Future-ready careers</h3>
+                            <p>By 2030, over 85% of the fastest-growing jobs in Southeast Asia will require STEM
+                                competencies.</p>
+                            <span class="tag">Career growth</span>
+                        </div>
                     </div>
-                </div>
-                <div class="why-item">
-                    <div class="why-n">04</div>
-                    <div>
-                        <h3>National Development</h3>
-                        <p>Cambodia's Vision 2050 relies on a tech-literate workforce. STEM education is a direct investment
-                            in the country's digital transformation.</p>
-                        <span class="why-chip">Cambodia 2050</span>
+                    <div class="why-item">
+                        <div class="why-n">03</div>
+                        <div>
+                            <h3>Innovation engine</h3>
+                            <p>Build better technology, sustainable agriculture, clean energy solutions, and world-class
+                                software — rooted in Cambodian context.</p>
+                            <span class="tag">Tech innovation</span>
+                        </div>
                     </div>
-                </div>
-                <div class="why-item">
-                    <div class="why-n">05</div>
-                    <div>
-                        <h3>Collaborative Mindset</h3>
-                        <p>Science and engineering are team sports. STEM education builds the communication, teamwork, and
-                            cross-disciplinary skills modern workplaces demand.</p>
-                        <span class="why-chip">Teamwork</span>
+                    <div class="why-item">
+                        <div class="why-n">04</div>
+                        <div>
+                            <h3>National development</h3>
+                            <p>Cambodia's Vision 2050 relies on a tech-literate workforce. STEM is a direct investment in
+                                the country's digital transformation.</p>
+                            <span class="tag">Cambodia 2050</span>
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-n">05</div>
+                        <div>
+                            <h3>Collaborative mindset</h3>
+                            <p>Science and engineering are team sports. STEM builds communication, teamwork, and
+                                cross-disciplinary skills modern workplaces demand.</p>
+                            <span class="tag">Teamwork</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1126,39 +1039,36 @@
     </section>
 
     <!-- ══ PROGRAMS ══ -->
-    <section class="programs-section">
-        <div class="programs-inner">
-            <span class="section-label">Programs</span>
-            <h2 class="section-title">What we <span class="accent">offer</span></h2>
-
+    <section class="section">
+        <div class="section-inner">
+            <span class="label">Programs</span>
+            <h2 class="h2">What we <em>offer</em></h2>
             <div class="programs-grid">
                 <div class="prog-card">
                     <div class="prog-badge">Curriculum</div>
-                    <h3>School Integration Program</h3>
+                    <h3>School integration program</h3>
                     <p>Fully-aligned STEM curricula embedded into Cambodia's national school system, with trained teachers
                         and localized content for grades 7–12.</p>
                     <div class="prog-meta">
-                        <div class="prog-meta-item"><span>Grade level</span><strong>7 – 12</strong></div>
+                        <div class="prog-meta-item"><span>Grade level</span><strong>7–12</strong></div>
                         <div class="prog-meta-item"><span>Mode</span><strong>Hybrid</strong></div>
                         <div class="prog-meta-item"><span>Duration</span><strong>Year-round</strong></div>
                     </div>
                 </div>
-
                 <div class="prog-card">
                     <div class="prog-badge">Workshop</div>
-                    <h3>Hands-On Innovation Labs</h3>
+                    <h3>Hands-on innovation labs</h3>
                     <p>Weekend and holiday programs where students build robots, design apps, run chemistry experiments, and
-                        present their work to industry mentors.</p>
+                        present to industry mentors.</p>
                     <div class="prog-meta">
                         <div class="prog-meta-item"><span>Frequency</span><strong>Bi-monthly</strong></div>
                         <div class="prog-meta-item"><span>Mode</span><strong>In-person</strong></div>
-                        <div class="prog-meta-item"><span>Ages</span><strong>12 – 18</strong></div>
+                        <div class="prog-meta-item"><span>Ages</span><strong>12–18</strong></div>
                     </div>
                 </div>
-
                 <div class="prog-card">
                     <div class="prog-badge">Digital</div>
-                    <h3>Online Learning Platform</h3>
+                    <h3>Online learning platform</h3>
                     <p>Self-paced modules, video lectures, quizzes, and project-based assessments — available 24/7 in Khmer
                         and English for any device.</p>
                     <div class="prog-meta">
@@ -1172,42 +1082,44 @@
     </section>
 
     <!-- ══ CTA ══ -->
-    <section class="cta-section">
-        <div class="cta-inner">
-            <div class="cta-card">
-                <div class="cta-card-title">
-                    <span></span> Platform Status
+    <section class="section section-soft">
+        <div class="section-inner">
+            <div class="cta-inner">
+                <div class="cta-panel">
+                    <div class="cta-panel-title">
+                        <span class="live-dot"></span> Platform status
+                    </div>
+                    <ul class="cta-list">
+                        <li>Active students <span class="val">12,047</span></li>
+                        <li>Modules available <span class="val">523</span></li>
+                        <li>Schools connected <span class="val">200+</span></li>
+                        <li>Registration <span class="val">FREE</span></li>
+                        <li>Languages <span class="val">KH / EN</span></li>
+                    </ul>
                 </div>
-                <ul class="cta-list">
-                    <li>Active students <span class="val">12,047</span></li>
-                    <li>Modules available <span class="val">523</span></li>
-                    <li>Schools connected <span class="val">200+</span></li>
-                    <li>Registration <span class="val">FREE</span></li>
-                    <li>Languages <span class="val">KH / EN</span></li>
-                </ul>
-            </div>
 
-            <div class="cta-text">
-                <span class="section-label">Join today</span>
-                <h2 class="section-title">Ready to build Cambodia's <span class="accent">future?</span></h2>
-                <p>Whether you're a student, teacher, or school — STEMBODIAN has everything you need to get started today.
-                </p>
-                <ul class="cta-checklist">
-                    <li>Free access to 500+ learning modules</li>
-                    <li>Available in Khmer and English</li>
-                    <li>Curriculum-aligned with national standards</li>
-                    <li>Mentors and live workshops included</li>
-                </ul>
-                <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
-                    <a href="/signup" class="btn-primary">Create Free Account</a>
-                    <a href="/news" class="btn-ghost">See Latest News</a>
+                <div class="cta-text">
+                    <span class="label">Join today</span>
+                    <h2 class="h2">Ready to build Cambodia's <em>future?</em></h2>
+                    <p>Whether you're a student, teacher, or school — STEMBODIAN has everything you need to get started
+                        today.</p>
+                    <ul class="checklist">
+                        <li>Free access to 500+ learning modules</li>
+                        <li>Available in Khmer and English</li>
+                        <li>Curriculum-aligned with national standards</li>
+                        <li>Mentors and live workshops included</li>
+                    </ul>
+                    <div style="display:flex; gap:.75rem; flex-wrap:wrap;">
+                        <a href="/signup" class="btn-primary">Create free account</a>
+                        <a href="/news" class="btn-ghost">See latest news</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ══ PARTNERS ══ -->
-    <section class="partners-section">
+    <section style="padding: 2.5rem 2rem; border-top: 1px solid var(--border);">
         <div class="partners-inner">
             <div class="partners-lbl">Trusted by</div>
             <div class="partners-div"></div>

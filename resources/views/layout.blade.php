@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -8,32 +8,34 @@
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
 
     <style>
         :root {
-            --clr-bg: #050c14;
-            --clr-bg2: #080f1a;
-            --clr-surface: #0d1929;
-            --clr-surface2: #101e30;
-            --clr-accent: #00e676;
-            --clr-accent-dim: rgba(0, 230, 118, 0.08);
-            --clr-accent-glow: rgba(0, 230, 118, 0.25);
-            --clr-blue: #38bdf8;
-            --clr-purple: #a78bfa;
-            --clr-text: #e8f4f8;
-            --clr-text2: #8ba8c0;
-            --clr-muted: #4a6880;
-            --clr-border: rgba(56, 189, 248, 0.12);
-            --clr-border-bright: rgba(0, 230, 118, 0.3);
-            --nav-h: 64px;
-            --radius: 8px;
-            --font-display: 'Syne', sans-serif;
-            --font-body: 'Space Grotesk', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            --bg: #ffffff;
+            --bg-soft: #f7f8f9;
+            --bg-rule: #f0f1f3;
+            --border: #e4e6ea;
+            --border-md: #d0d3d9;
+            --text: #0f1117;
+            --text-2: #525866;
+            --text-3: #9098a3;
+            --blue: #1a56db;
+            --blue-lt: #eff4ff;
+            --green: #0a7c52;
+            --green-lt: #ecfdf5;
+            --amber: #b45309;
+            --amber-lt: #fffbeb;
+            --purple: #6d28d9;
+            --purple-lt: #f5f3ff;
+            --nav-h: 60px;
+            --max-w: 1120px;
+            --font: 'DM Sans', sans-serif;
+            --mono: 'DM Mono', monospace;
+            --r: 6px;
         }
 
         *,
@@ -49,26 +51,14 @@
         }
 
         body {
-            background: var(--clr-bg);
-            color: var(--clr-text);
-            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
             font-size: 15px;
-            line-height: 1.7;
+            line-height: 1.65;
             min-height: 100vh;
             padding-top: var(--nav-h);
-        }
-
-        /* ── GRID TEXTURE ── */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-            background-size: 48px 48px;
-            pointer-events: none;
-            z-index: 0;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* ── NAV ── */
@@ -78,224 +68,196 @@
             left: 0;
             right: 0;
             height: var(--nav-h);
-            background: rgba(5, 12, 20, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--clr-border);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2.5rem;
+            padding: 0 2rem;
             z-index: 1000;
         }
 
-        nav.site-nav::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--clr-accent), transparent);
-            opacity: 0.4;
-        }
-
-        .nav-wordmark {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--clr-accent);
-            letter-spacing: 0.08em;
-            text-decoration: none;
+        .nav-logo {
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
 
-        .nav-wordmark img {
-            width: 36px;
-            height: auto;
-            filter: brightness(0) invert(1) saturate(0) brightness(1.5);
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .nav-wordmark .brand-name {
+        .nav-logo-icon img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+            object-fit: contain;
+        }
+
+        .nav-logo-text {
             display: flex;
             flex-direction: column;
-            line-height: 1.1;
+            line-height: 1.2;
         }
 
-        .nav-wordmark .brand-top {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--clr-text);
-            letter-spacing: 0.15em;
+        .nav-logo-text .t1 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: 0.04em;
         }
 
-        .nav-wordmark .brand-sub {
+        .nav-logo-text .t2 {
             font-size: 10px;
-            color: var(--clr-accent);
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+            color: var(--text-3);
+            letter-spacing: 0.06em;
+            font-weight: 400;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 0.15rem;
+            gap: 2px;
         }
 
-        .nav-link-item {
-            font-family: var(--font-body);
+        .nav-link {
+            font-size: 13.5px;
+            font-weight: 400;
+            color: var(--text-2);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: var(--r);
+            transition: color .15s, background .15s;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+            background: var(--bg-soft);
+        }
+
+        .nav-link.active {
+            color: var(--blue);
+            font-weight: 500;
+        }
+
+        .nav-btn {
             font-size: 13px;
             font-weight: 500;
-            color: var(--clr-text2);
+            color: #fff;
+            background: var(--blue);
             text-decoration: none;
-            padding: 0.4rem 0.85rem;
-            border-radius: 6px;
-            transition: color 0.2s, background 0.2s;
-            letter-spacing: 0.02em;
+            padding: 7px 16px;
+            border-radius: var(--r);
+            margin-left: 6px;
+            transition: opacity .15s;
         }
 
-        .nav-link-item:hover {
-            color: var(--clr-text);
-            background: rgba(56, 189, 248, 0.08);
+        .nav-btn:hover {
+            opacity: .85;
+            color: #fff;
         }
 
-        .nav-link-item.active {
-            color: var(--clr-accent);
-        }
-
-        .nav-link-pill {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            font-weight: 700;
-            color: #050c14;
-            background: var(--clr-accent);
-            text-decoration: none;
-            padding: 0.4rem 1.1rem;
-            border-radius: 4px;
-            transition: box-shadow 0.2s, opacity 0.2s;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .nav-link-pill:hover {
-            opacity: 0.88;
-            color: #050c14;
-            box-shadow: 0 0 20px var(--clr-accent-glow);
-        }
-
-        /* ── FLASH MESSAGE ── */
+        /* ── FLASH ── */
         .flash-msg {
-            background: rgba(0, 230, 118, 0.08);
-            border-bottom: 1px solid rgba(0, 230, 118, 0.2);
-            color: var(--clr-accent);
+            background: var(--blue-lt);
+            border-bottom: 1px solid #bfcfef;
+            color: var(--blue);
             font-size: 13px;
-            font-family: var(--font-mono);
-            padding: 0.65rem 2rem;
+            font-family: var(--mono);
+            padding: .6rem 2rem;
             text-align: center;
-            position: relative;
-            z-index: 10;
         }
 
         /* ── FOOTER ── */
         footer.site-footer {
-            background: var(--clr-bg2);
-            border-top: 1px solid var(--clr-border);
-            padding: 3rem 2.5rem 2rem;
-            margin-top: 0;
+            background: var(--bg-soft);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 1.75rem;
         }
 
         .footer-inner {
-            max-width: 1200px;
+            max-width: var(--max-w);
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1.5fr 1fr 1fr;
             gap: 3rem;
         }
 
-        .footer-brand .brand-name-lg {
-            font-family: var(--font-mono);
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--clr-text);
-            letter-spacing: 0.1em;
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-brand .brand-name-lg span {
-            color: var(--clr-accent);
+        .footer-brand-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: 0.04em;
+            margin-bottom: 8px;
         }
 
         .footer-brand p {
             font-size: 13px;
-            color: var(--clr-muted);
+            color: var(--text-3);
             line-height: 1.7;
-            max-width: 260px;
+            max-width: 240px;
         }
 
         .footer-col h4 {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--clr-accent);
-            letter-spacing: 0.2em;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-3);
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            margin-bottom: 12px;
         }
 
         .footer-col a {
             display: block;
             font-size: 13px;
-            color: var(--clr-text2);
+            color: var(--text-2);
             text-decoration: none;
-            padding: 0.3rem 0;
-            transition: color 0.2s;
+            padding: 3px 0;
+            transition: color .15s;
         }
 
         .footer-col a:hover {
-            color: var(--clr-text);
+            color: var(--text);
         }
 
         .footer-bottom {
-            max-width: 1200px;
+            max-width: var(--max-w);
             margin: 2rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--clr-border);
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 12px;
-            color: var(--clr-muted);
-            font-family: var(--font-mono);
+            color: var(--text-3);
         }
 
-        .status-dot {
+        .status-pill {
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            font-size: 12px;
+            color: var(--green);
+            background: var(--green-lt);
+            padding: 3px 10px;
+            border-radius: 100px;
         }
 
-        .status-dot::before {
+        .status-pill::before {
             content: '';
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            background: var(--clr-accent);
-            animation: pulse-dot 2s infinite;
-        }
-
-        @keyframes pulse-dot {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.3;
-            }
+            background: var(--green);
         }
     </style>
 </head>
@@ -303,26 +265,28 @@
 <body>
 
     <nav class="site-nav">
-        <a href="{{ url('') }}" class="nav-wordmark">
-            <img src="{{ asset('img/logosteam.png') }}" alt="STEM Cambodia logo">
-            <div class="brand-name">
-                <span class="brand-top">STEMBODIAN</span>
-                <span class="brand-sub">Cambodia</span>
+        <a href="{{ url('') }}" class="nav-logo">
+            <div class="nav-logo-icon">
+                <img src="{{ asset('img/logosteam.png') }}" alt="STEM Cambodia">
+            </div>
+            <div class="nav-logo-text">
+                <span class="t1">STEMBODIAN</span>
+                <span class="t2">Cambodia</span>
             </div>
         </a>
 
         <div class="nav-links">
-            <a class="nav-link-item active" href="{{ url('') }}">Home</a>
-            <a class="nav-link-item" href="/aboutus">About Us</a>
-            <a class="nav-link-item" href="/news">News</a>
-            <a class="nav-link-item" href="/bookmarks">Bookmarks</a>
-            <a class="nav-link-item" href="/signup">Sign Up</a>
-            <a class="nav-link-pill" href="/dashboard">Dashboard →</a>
+            <a class="nav-link active" href="{{ url('') }}">Home</a>
+            <a class="nav-link" href="/aboutus">About us</a>
+            <a class="nav-link" href="/news">News</a>
+            <a class="nav-link" href="/bookmarks">Bookmarks</a>
+            <a class="nav-link" href="/signup">Sign up</a>
+            <a class="nav-btn" href="/dashboard">Dashboard →</a>
         </div>
     </nav>
 
     @if (session('message'))
-        <div class="flash-msg">// {{ session('message') }}</div>
+        <div class="flash-msg">{{ session('message') }}</div>
     @endif
 
     @yield('content')
@@ -330,14 +294,14 @@
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-brand">
-                <div class="brand-name-lg">STEM<span>BODIAN</span></div>
+                <div class="footer-brand-name">STEMBODIAN</div>
                 <p>Advancing Cambodia's future through science, technology, engineering, and mathematics education.</p>
             </div>
             <div class="footer-col">
                 <h4>Navigate</h4>
                 <a href="/">Home</a>
-                <a href="/aboutus">About Us</a>
-                <a href="/news">News & Events</a>
+                <a href="/aboutus">About us</a>
+                <a href="/news">News & events</a>
                 <a href="/bookmarks">Bookmarks</a>
             </div>
             <div class="footer-col">
@@ -350,7 +314,7 @@
         </div>
         <div class="footer-bottom">
             <span>© 2025 STEMBODIAN — STEM Cambodia</span>
-            <span class="status-dot">All systems operational</span>
+            <span class="status-pill">All systems operational</span>
         </div>
     </footer>
 
