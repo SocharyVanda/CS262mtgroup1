@@ -16,6 +16,14 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
+Route::get('/science', function () {
+    return view('science');
+});
+
+route::get('/technology', function () {
+    return view('technology');
+});
+
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
