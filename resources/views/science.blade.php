@@ -1,14 +1,8 @@
 @extends('layout')
-<<<<<<< HEAD
-@section('title', 'STEM Cambodia - Home')
+@section('title', 'Cell Biology: The Building Blocks of Life - STEM Cambodia')
 @section('content')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction to Python Programming</title>
+
     <style>
         * {
             margin: 0;
@@ -173,12 +167,31 @@
             overflow-x: auto;
         }
 
-        .code-block .c-comment { color: #999; font-style: italic; }
-        .code-block .c-string  { color: #c0392b; }
-        .code-block .c-number  { color: #c0392b; }
-        .code-block .c-keyword { color: #2471a3; font-weight: bold; }
-        .code-block .c-func    { color: #e67e22; }
-        .code-block .c-var     { color: #c0392b; }
+        .code-block .c-comment {
+            color: #999;
+            font-style: italic;
+        }
+
+        .code-block .c-string {
+            color: #c0392b;
+        }
+
+        .code-block .c-number {
+            color: #c0392b;
+        }
+
+        .code-block .c-keyword {
+            color: #2471a3;
+            font-weight: bold;
+        }
+
+        .code-block .c-func {
+            color: #e67e22;
+        }
+
+        .code-block .c-var {
+            color: #c0392b;
+        }
 
         /* Divider */
         .divider {
@@ -227,108 +240,80 @@
             text-align: right;
         }
     </style>
-</head>
-<body>
 
-<div class="page-wrapper">
-    <article class="article">
+    <div class="page-wrapper">
+        <article class="article">
 
-        {{-- Tags --}}
-        <div class="tags">
-            <span class="tag tag-tech">Technology</span>
-            <span class="tag tag-beginner">Beginner</span>
-            <span class="read-time">8 min read</span>
-        </div>
+            {{-- Tags --}}
+            <div class="tags">
+                <span class="tag tag-science">Science</span>
+                <span class="tag tag-beginner">Beginner</span>
+                <span class="read-time">7 min read</span>
+            </div>
 
-        {{-- Title --}}
-        <h1>Introduction to Python Programming</h1>
+            {{-- Title --}}
+            <h1>Cell Biology: The Building Blocks of Life</h1>
 
-        {{-- Meta --}}
-        <div class="meta">
-            <span>By <span class="author">Admin</span> &nbsp;·&nbsp; June 2025</span>
-            <span class="bookmark-icon">🔖</span>
-        </div>
+            {{-- Meta --}}
+            <div class="meta">
+                <span>By <span class="author">Admin</span> &nbsp;·&nbsp; June 2025</span>
+                <span class="bookmark-icon">🔖</span>
+            </div>
 
-        {{-- Intro paragraph --}}
-        <p>
-            Python is a high-level, interpreted programming language known for its clear and readable
-            syntax. Created by Guido van Rossum in 1991, it has become one of the most popular languages
-            worldwide — used in web development, data science, AI, automation, and more.
-        </p>
+            {{-- Intro paragraph --}}
+            <p>
+                The cell is the fundamental unit of life. Every living organism — from the simplest bacterium
+                to a complex human — is made of cells. Understanding cells is the foundation of all biology.
+            </p>
 
-        {{-- Tip box --}}
-        <div class="tip-box">
-            <span class="tip-icon">💡</span>
-            Python uses indentation instead of curly braces to define code blocks, making code visually
-            clean and easy to read.
-        </div>
+            {{-- Tip box --}}
+            <div class="tip-box">
+                <span class="tip-icon">🔬</span>
+                The average human body contains approximately 37 trillion cells, each performing specialised
+                functions to keep you alive.
+            </div>
 
-        {{-- Key Concepts --}}
-        <h2>Key Concepts</h2>
+            {{-- Key Concepts --}}
+            <h2>Key Concepts</h2>
 
-        <p>Before writing your first program, you need to understand a few foundational ideas:</p>
+            <p>There are two primary types of cells:</p>
 
-        <ul>
-            <li><strong>Variables</strong> — containers that store data values</li>
-            <li><strong>Data types</strong> — integers, floats, strings, booleans, lists, dictionaries</li>
-            <li><strong>Control flow</strong> — if/else statements, loops</li>
-            <li><strong>Functions</strong> — reusable blocks of code</li>
-        </ul>
+            <ul>
+                <li><strong>Prokaryotic cells</strong> — simple cells without a nucleus (bacteria, archaea)</li>
+                <li><strong>Eukaryotic cells</strong> — complex cells with a membrane-bound nucleus (plants, animals, fungi)
+                </li>
+            </ul>
 
-        {{-- How It Works --}}
-        <h2>How It Works</h2>
+            {{-- How It Works --}}
+            <h2>How It Works</h2>
 
-        <p>Python code is written in <code>.py</code> files and run by the Python interpreter. The interpreter reads your code line by line and executes each instruction.</p>
+            <p>Every cell contains organelles — specialised structures that carry out specific functions:</p>
 
-        {{-- Code block --}}
-        <div class="code-block">
-            <span class="c-comment"># Your first Python program</span><br>
-            <span class="c-var">name</span> = <span class="c-string">"Sophea"</span> &nbsp;
-            <span class="c-var">age</span> = <span class="c-number">18</span><br>
-            <span class="c-func">print</span>(<span class="c-string">f"Hello, {<span class="c-var">name</span>}! You are {<span class="c-var">age</span>} years old."</span>)<br>
-            <span class="c-comment"># A simple loop</span><br>
-            <span class="c-keyword">for</span> i <span class="c-keyword">in</span> <span class="c-func">range</span>(<span class="c-number">5</span>): &nbsp;
-            <span class="c-func">print</span>(<span class="c-string">f"Count: {i}"</span>)
-        </div>
+            <ul>
+                <li><strong>Nucleus</strong> — contains DNA and controls cell activity</li>
+                <li><strong>Mitochondria</strong> — produces energy (ATP) through cellular respiration</li>
+                <li><strong>Ribosome</strong> — synthesises proteins</li>
+                <li><strong>Cell membrane</strong> — controls what enters and exits the cell</li>
+            </ul>
 
-        {{-- Applications --}}
-        <h2>Applications</h2>
+            {{-- Applications --}}
+            <h2>Applications</h2>
 
-        <p>Python is used across many fields. In Cambodia and throughout Southeast Asia, Python skills are increasingly in demand for careers in fintech, e-commerce, agriculture data analytics, and government digital services.</p>
+            <p>
+                Cell biology underpins modern medicine. Understanding how cells divide (mitosis and meiosis),
+                communicate, and die (apoptosis) is essential for understanding cancer, genetic diseases,
+                and developing new treatments.
+            </p>
 
-        <ul>
-            <li>Web development with Django and Flask</li>
-            <li>Data analysis with Pandas and NumPy</li>
-            <li>Machine learning with TensorFlow and scikit-learn</li>
-            <li>Automation of repetitive tasks</li>
-        </ul>
+            {{-- Summary --}}
+            <h2>Summary</h2>
 
-        {{-- Summary --}}
-        <h2>Summary</h2>
+            <p>
+                Cells are not just building blocks — they are living machines. Every process in your body,
+                from thinking to digesting food, comes down to what's happening inside individual cells.
+            </p>
 
-        <p>Python is the perfect first language — readable, powerful, and supported by one of the largest communities in software. Start small, write a few scripts, and you'll be building real applications in no time.</p>
+        </article>
+    </div>
 
-
-    </article>
-</div>
-
-</body>
-</html>
-
-=======
-
-{{-- 1. Browser Tab Title --}}
-@section('title', 'Science Department - STEMBODIAN')
-
-{{-- 2. Category Header Configurations --}}
-@section('page-title', 'Science')
-@section('page-description', 'Explore Biology, Chemistry, Physics and more')
-@section('page-icon', '🔬')
-@section('page-id', 'science')
-@section('page-color-var', 'sci') 
-
-{{-- 3. Main Page Body Content --}}
-@section('content')
-
->>>>>>> fb160de48dbb668850d4af289a72d2b4ad640690
 @endsection

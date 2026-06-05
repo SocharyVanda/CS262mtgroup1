@@ -136,7 +136,8 @@
 
     <nav class="site-nav">
         <a href="{{ url('') }}" class="nav-wordmark">
-            <span> <img src="{{ asset('img/logosteam.png') }}" alt="logo" style="width:60px;height:auto;"></span>
+            <span></span> <img src="{{ asset('img/logosteam.png') }}" alt="logo"
+                style="width:60px;height:auto;"></span>
             STEM<span> Cambodia</span></a>
 
         <div class="nav-links">

@@ -20,8 +20,18 @@ Route::get('/science', function () {
     return view('science');
 });
 
+
 route::get('/technology', function () {
     return view('technology');
+});
+route::get('/mathematics', function () {
+    return view('mathematics');
+});
+route::get('/engineering', function () {
+    return view('engineering');
+});
+route::get('/aboutus', function () {
+    return view('aboutus');
 });
 
 
