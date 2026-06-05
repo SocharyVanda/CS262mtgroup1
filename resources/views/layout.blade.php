@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>@yield('title', 'STEM Cambodia')</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Inter:wght@400;600&family=Noto+Sans+Khmer:wght@400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Inter:wght@400;600&family=Noto+Sans+Khmer:wght@400&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -90,13 +97,36 @@
                         "display-lg": ["Plus Jakarta Sans"]
                     },
                     "fontSize": {
-                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
-                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
-                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
-                        "khmer-body": ["16px", { "lineHeight": "1.8", "fontWeight": "400" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                        "headline-md": ["24px", {
+                            "lineHeight": "1.3",
+                            "fontWeight": "600"
+                        }],
+                        "body-md": ["16px", {
+                            "lineHeight": "1.5",
+                            "fontWeight": "400"
+                        }],
+                        "display-lg-mobile": ["32px", {
+                            "lineHeight": "1.2",
+                            "fontWeight": "700"
+                        }],
+                        "label-sm": ["12px", {
+                            "lineHeight": "1",
+                            "letterSpacing": "0.05em",
+                            "fontWeight": "600"
+                        }],
+                        "khmer-body": ["16px", {
+                            "lineHeight": "1.8",
+                            "fontWeight": "400"
+                        }],
+                        "body-lg": ["18px", {
+                            "lineHeight": "1.6",
+                            "fontWeight": "400"
+                        }],
+                        "display-lg": ["48px", {
+                            "lineHeight": "1.2",
+                            "letterSpacing": "-0.02em",
+                            "fontWeight": "700"
+                        }]
                     }
                 }
             }
@@ -106,30 +136,52 @@
         .ambient-shadow:hover {
             box-shadow: 0 10px 15px -3px rgba(86, 94, 116, 0.1), 0 4px 6px -2px rgba(86, 94, 116, 0.05);
         }
+
         .glass-panel {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.2);
+            /* Semi-transparent background */
+            backdrop-filter: blur(8px);
+            /* The blur effect that creates the "frosted" look */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            /* A subtle border adds depth */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            /* Soft shadow for a "floating" effect */
+            color: rgb(34, 24, 24);
+        }
     </style>
 </head>
+
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-16">
 
-    <nav class="bg-surface dark:bg-inverse-surface shadow-sm fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto">
-    <div class="flex items-center gap-sm">
-        <span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">STEM Cambodia</span>
-    </div>
-    <div class="hidden md:flex gap-md">
-        <a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-bold text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-t-sm" href="{{ url('') }}">Home</a>
-        <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-sm pb-1" href="#">News</a>
-        <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-sm pb-1" href="#">Bookmarks</a>
-        <a class="nav-item nav-link link-body-emphasis" href="/signup">sign up</a>
-    </div>
-</nav>
+    <nav
+        class="bg-surface dark:bg-inverse-surface shadow-sm fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto">
+        <div class="flex items-center gap-sm">
+            <span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">STEM
+                Cambodia</span>
+        </div>
+        <div class="hidden md:flex gap-md">
+            <a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-bold text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-t-sm"
+                href="{{ url('') }}">Home</a>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-sm pb-1"
+                href="#">News</a>
+            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-sm pb-1"
+                href="#">Bookmarks</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/signup">sign up</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/dashboard">Profile</a>
+
+        </div>
+    </nav>
 
     @yield('content')
 
 
 </body>
+
 </html>

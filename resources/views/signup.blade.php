@@ -1,54 +1,56 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width
-    , initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body>
-     <div class="bd-primary">
-           @auth
-    <h2> Contrat! You are login!</h2>
-    <form action="/logout" method="POST">
-        @csrf
-        <button>Logout</button>
-    </form>
-            @else
+@extends('layout')
+@section('title', 'STEM Cambodia - Home')
+@section('content')
 
-            <div class="col-md-6 offset-md-1 py-5 ">
-                <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-                    
-                        <h4>SIGN UP</h4>
-                        <p>Don't have an account yet? Sign up here!</p>
-                        <form action="/register" method="post" >
-                            @csrf
-                            <input type="text" name="name" class="mt-2 form-control" placeholder="Username">
-                            <input type="password" name="password" class="mt-2 form-control" placeholder="Password">
-                            <input type="password" name="password_confirmation" class="mt-2 form-control" placeholder="Repeat Password">
-                            <input type="text" name="email" class="my-2 form-control" placeholder="E-mail">
-                            <br><br>
-                            <button type="submit" name="submit" class="btn btn-primary my-2">SIGN UP</button>
-                        </form>
-                </div> 
-            </div>
-            <div class="col-md-6 offset-md-1 py-5">  
-                <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-                        <h4>LOGIN</h4>
-                        <p>Log in here!</p>
-                        <form action="/login" method="post">
-                          @csrf
-                            <input type="text" name="loginname" placeholder="Username">
-                            <input type="password" name="loginpassword" placeholder="Password">
-                            <br><br>
-                            <button type="submit" name="submit" class="btn btn-primary my-2">LOGIN</button>
-                        </form>
+    <div style="padding:  1.25rem 1rem; display: flex; flex-direction: column; align-items: center; gap: 4rem;">
 
-                        <?php ?>
-                </div>
-            </div>
-             @endauth
+        <div style="text-align: center; margin-bottom: 0.5rem;">
+            <p class="text-muted small text-uppercase fw-semibold mb-1" style="letter-spacing: 0.08em;">STEM Cambodia</p>
+            <h1 class="h4 fw-medium mb-0">Welcome</h1>
         </div>
-</body>
-</html>
+
+        @auth
+            <div class="text-center">
+                <p class="mb-3">You are logged in.</p>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button class="btn btn-outline-secondary btn-sm">Log out</button>
+                </form>
+            </div>
+        @else
+            <div class="row g-4" style="width: 100%; max-width: 640px;">
+
+                <div class="col-md-6">
+                    <div class="p-4 border rounded-3 bg-white">
+                        <p class="text-muted small text-uppercase fw-semibold mb-3" style="letter-spacing: 0.07em;">Sign up</p>
+                        <form action="/register" method="post" class="d-flex flex-column gap-2">
+                            @csrf
+                            <input type="text" name="name" class="form-control" placeholder="Username">
+                            <input type="password" name="password" class="form-control" placeholder="Password">
+                            <input type="password" name="password_confirmation" class="form-control"
+                                placeholder="Repeat password">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                            <button type="submit" class="btn btn-primary mt-1">Create account</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-4 border rounded-3 bg-white">
+                        <p class="text-muted small text-uppercase fw-semibold mb-3" style="letter-spacing: 0.07em;">Log in</p>
+                        <form action="/login" method="post" class="d-flex flex-column gap-2">
+                            @csrf
+                            <input type="text" name="loginname" class="form-control" placeholder="Username">
+                            <input type="password" name="loginpassword" class="form-control" placeholder="Password">
+                            <button type="submit" class="btn btn-primary mt-1">Log in</button>
+                        </form>
+                        <p class="text-center text-muted mt-3 mb-0" style="font-size: 12px;">Forgot your password?</p>
+                    </div>
+                </div>
+
+            </div>
+        @endauth
+
+    </div>
+
+@endsection
