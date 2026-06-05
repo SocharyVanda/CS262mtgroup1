@@ -1,124 +1,166 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>@yield('title', 'STEMBODIAN')</title>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script src="{{ asset('js/tailwind.config.js') }}"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Khmer:wght@400&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
 
-    {{--3. Google Fonts --}}
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Inter:wght@400;600&family=Noto+Sans+Khmer:wght@400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --clr-bg: #f5f5f0;
+            --clr-surface: #ffffff;
+            --clr-accent: #1a7a4a;
+            --clr-accent-dim: #e8f5ee;
+            --clr-text: #111110;
+            --clr-muted: #6b7280;
+            --clr-border: #e2e2dc;
+            --clr-tertiary: #1e40af;
+            --clr-secondary: #4b5563;
+            --nav-h: 60px;
+            --radius: 8px;
+        }
 
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        body {
+            background: var(--clr-bg);
+            color: var(--clr-text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-top: var(--nav-h);
+        }
 
+        /* ── NAV ── */
+        nav.site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-h);
+            background: rgba(245, 245, 240, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--clr-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 100;
+        }
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        .nav-wordmark {
+            font-family: 'DM Mono', monospace;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--clr-accent);
+            letter-spacing: 0.04em;
+            text-decoration: none;
+        }
+
+        .nav-wordmark span {
+            color: var(--clr-muted);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .nav-link-item {
+            font-size: 13.5px;
+            font-weight: 400;
+            color: var(--clr-muted);
+            text-decoration: none;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            transition: color 0.15s, background 0.15s;
+        }
+
+        .nav-link-item:hover {
+            color: var(--clr-text);
+            background: var(--clr-accent-dim);
+        }
+
+        .nav-link-item.active {
+            color: var(--clr-accent);
+            font-weight: 500;
+        }
+
+        .nav-link-pill {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--clr-surface);
+            background: var(--clr-accent);
+            text-decoration: none;
+            padding: 0.35rem 0.9rem;
+            border-radius: 100px;
+            transition: opacity 0.15s;
+        }
+
+        .nav-link-pill:hover {
+            opacity: 0.85;
+            color: var(--clr-surface);
+        }
+
+        /* ── UTILITY ── */
+        .mono {
+            font-family: 'DM Mono', monospace;
+        }
+    </style>
 </head>
 
+<body>
 
+    <nav class="site-nav">
+        <a href="{{ url('') }}" class="nav-wordmark">STEM<span>/Cambodia</span></a>
 
-<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-16">
-
-<nav class="bg-surface dark:bg-inverse-surface shadow-sm fixed top-0 left-0 w-full z-50 h-16 border-b border-surface-container-low dark:border-surface-variant">
-    
-    <div class="w-full h-full px-6 md:px-12 flex justify-between items-center">
-        
-        <div class="flex items-center">
-            <span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">STEMBODIAN</span>
-        </div>
-        <div class="hidden md:flex gap-md">
-            <a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-bold text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-t-sm" href="http://cs262mtgroup1.test">Home</a>
-            <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-sm pb-1" href="http://cs262mtgroup1.test/dashboard">Dashboard</a>
-            <a class="nav-item nav-link link-body-emphasis" href="http://cs262mtgroup1.test/signup">sign up</a>
-
-            <div class="btn-group">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Danger
-                </button>
-<ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="{{ url('http://cs262mtgroup1.test/science ') }}">SCIENCE</a></li>
-    <li><a class="dropdown-item" href="{{ url('http://cs262mtgroup1.test/technology') }}">TECHNOLOGY</a></li>
-    <li><a class="dropdown-item" href="{{ url('http://cs262mtgroup1.test/engineering') }}">ENGINEERING</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="{{ url('http://cs262mtgroup1.test/mathematics') }}">MATHEMATICS</a></li>
-</ul>
-            </div>
+        <div class="nav-links">
+            <a class="nav-link-item active" href="{{ url('') }}">Home</a>
+            <a class="nav-link-item" href="#">News</a>
+            <a class="nav-link-item" href="#">Bookmarks</a>
+            <a class="nav-link-item" href="/signup">Sign up</a>
+            <a class="nav-link-pill" href="/dashboard">Dashboard</a>
         </div>
     </nav>
-
-
-
-    @hasSection('page-title')
-    <div class="page" id="page-@yield('page-id', 'generic')">
-        <div class="cat-page-header py-4 bg-surface-container border-b border-outline-variant">
-            <div class="container mx-auto px-gutter">
-                <div class="cat-page-title-row flex items-center gap-md">
-                    <span class="cat-big-icon text-4xl">@yield('page-icon', '🔬')</span>
-                    <div>
-                        <div class="cat-page-title text-headline-md font-bold" style="color: var(--@yield('page-color-var', 'primary'))">
-                            @yield('page-title')
-                        </div>
-                        <div class="cat-page-desc text-secondary text-body-md">
-                            @yield('page-description')
-                        </div>
-                    </div>
-                </div>
-            </div>
+    @if (session('message'))
+        <div
+            style="
+    background: #e8f5ee;
+    border-bottom: 1px solid #a7d7b8;
+    color: #1a7a4a;
+    font-size: 13.5px;
+    font-family: 'DM Sans', sans-serif;
+    padding: 0.65rem 2rem;
+    text-align: center;
+">
+            {{ session('message') }}
         </div>
-    </div>
     @endif
-
-
-
-
-
-    <main class="flex-1">
-        @yield('content')
-    </main>
-
-<footer class="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline w-full rounded-none">
-    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 with px-[10px]">
-        
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-6">
-            <div class="space-y-4 col-span-full">
-                
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-size: 24px;">school</span>
-                    <span class="font-title-md text-title-md font-bold text-on-surface dark:text-on-primary-container">STEMBODIAN</span>
-                </div>
-                
-
-                <p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant leading-relaxed max-w-xl">
-                    Empowering Cambodia's next generation through accessible STEM education.
-                </p>
-                
-                <div class="flex flex-wrap gap-6 pt-2">
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Programs</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
-                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
-                </div>
- 
-            </div>
-        </div>
-
-        <div class="pt-8 border-t border-outline-variant dark:border-outline flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant text-center md:text-left">
-                &copy; 2026 STEMBODIAN.
-            </p>
-            <div class="flex items-center gap-6">
-                <div class="flex items-center gap-1">
-                    <span class="material-symbols-outlined text-secondary" style="font-size: 18px;">location_on</span>
-                    <span class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant">Phnom Penh, Cambodia</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</footer>
+    @yield('content')
 
 </body>
+
 </html>
