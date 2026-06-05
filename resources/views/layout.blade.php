@@ -53,12 +53,13 @@
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: var(--font);
+
             font-size: 15px;
             line-height: 1.65;
             min-height: 100vh;
             padding-top: var(--nav-h);
             -webkit-font-smoothing: antialiased;
+            font-family: Georgia, 'Times New Roman', serif;
         }
 
         /* ── NAV ── */

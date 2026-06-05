@@ -67,9 +67,13 @@
         .auth-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
+            gap: 1.5rem;
             width: 100%;
-            max-width: 680px;
+            max-width: 850px;
+            padding: 1.5rem;
+            border: 2px solid var(--clr-border);
+            border-radius: 16px;
+
         }
 
         @media (max-width: 600px) {
@@ -79,10 +83,25 @@
         }
 
         .auth-panel {
-            background: var(--clr-surface);
-            border: 1px solid var(--clr-border);
-            border-radius: var(--radius);
-            padding: 1.75rem;
+            background: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .auth-panel {
+            background: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.04),
+                0 1px 3px rgba(0, 0, 0, 0.06);
+        }
+
+        .auth-panel:hover {
+            border-color: #2563eb;
         }
 
         .auth-panel-label {
@@ -103,71 +122,75 @@
         .stem-input {
             width: 100%;
             background: var(--clr-bg);
-            border: 1px solid var(--clr-border);
-            border-radius: 6px;
-            padding: 0.6rem 0.85rem;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 13.5px;
-            color: var(--clr-text);
-            outline: none;
-            transition: border-color 0.15s;
-        }
+            border: 2px solid var(--clr-border);
 
-        .stem-input:focus {
-            border-color: var(--clr-accent);
-        }
+            .stem-input:focus {
+                border-color: var(--clr-accent);
+                box-shadow: 0 0 0 3px var(--clr-accent-dim);
+            }
 
-        .stem-input::placeholder {
-            color: #a1a1a1;
-        }
+            .stem-input:focus {
+                border-color: var(--clr-accent);
+                box-shadow: 0 0 0 3px var(--clr-accent-dim);
+            }
 
-        .btn-stem {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--clr-surface);
-            background: var(--clr-accent);
-            border: none;
-            border-radius: 6px;
-            padding: 0.55rem 1rem;
-            cursor: pointer;
-            transition: opacity 0.15s;
-            margin-top: 0.25rem;
-        }
+            .btn-stem {
+                font-size: 13px;
+                font-weight: 500;
+                color: var(--clr-surface);
+                background: var(--clr-accent);
+                border: none;
+                border-radius: 6px;
+                padding: 0.55rem 1rem;
+                cursor: pointer;
+                transition: opacity 0.15s;
+                margin-top: 0.25rem;
+                border: 2px solid transparent;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
 
-        .btn-stem:hover {
-            opacity: 0.85;
-        }
+            .welcome-brand {
+                text-align: center;
+                padding-bottom: 1rem;
+                border-bottom: 2px solid var(--clr-border);
+                width: 100%;
+                max-width: 850px;
+            }
 
-        .auth-footer {
-            font-size: 12px;
-            color: var(--clr-muted);
-            text-align: center;
-            margin-top: 1rem;
-        }
+            .btn-stem:hover {
+                opacity: 0.85;
+            }
 
-        .auth-footer a {
-            color: var(--clr-accent);
-            text-decoration: none;
-        }
+            .auth-footer {
+                font-size: 12px;
+                color: var(--clr-muted);
+                text-align: center;
+                margin-top: 1rem;
+            }
 
-        .auth-footer a:hover {
-            text-decoration: underline;
-        }
+            .auth-footer a {
+                color: var(--clr-accent);
+                text-decoration: none;
+            }
 
-        .alert-stem {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            border-radius: 6px;
-            padding: 0.75rem 1rem;
-            font-size: 13px;
-            color: #b91c1c;
-            margin-bottom: 1rem;
-        }
+            .auth-footer a:hover {
+                text-decoration: underline;
+            }
 
-        .alert-stem ul {
-            margin: 0;
-            padding-left: 1.1rem;
-        }
+            .alert-stem {
+                background: #fef2f2;
+                border: 1px solid #fecaca;
+                border-radius: 6px;
+                padding: 0.75rem 1rem;
+                font-size: 13px;
+                color: #b91c1c;
+                margin-bottom: 1rem;
+            }
+
+            .alert-stem ul {
+                margin: 0;
+                padding-left: 1.1rem;
+            }
     </style>
 
     <div class="welcome-wrap">
