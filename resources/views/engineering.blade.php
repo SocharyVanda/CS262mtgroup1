@@ -8,7 +8,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Introduction to Python Programming</title>
+        <title>Introduction to Engineering</title>
         <style>
             * {
                 margin: 0;
@@ -17,7 +17,7 @@
             }
 
             body {
-                background-color: #f5f3ee;
+                background: var(--bg);
                 font-family: Georgia, 'Times New Roman', serif;
                 color: #1a1a1a;
                 line-height: 1.7;

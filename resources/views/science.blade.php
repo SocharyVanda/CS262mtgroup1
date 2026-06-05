@@ -11,7 +11,7 @@
         }
 
         body {
-            background-color: #f5f3ee;
+            background: var(--bg);
             font-family: Georgia, 'Times New Roman', serif;
             color: #1a1a1a;
             line-height: 1.7;

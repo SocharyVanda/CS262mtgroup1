@@ -201,8 +201,8 @@
         .hero-visual-box {
             width: 340px;
             height: 340px;
-            background: var(--bg-soft);
-            border: 1px solid var(--border);
+            background: transparent;
+            border: none;
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -212,14 +212,7 @@
         }
 
         .hero-visual-box::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 32px 32px;
-            opacity: .5;
+            display: none;
         }
 
         .hero-visual-box img {
@@ -826,44 +819,71 @@
         }
     </style>
 
-    <!-- ══ HERO ══ -->
-    <section class="hero">
-        <div class="hero-inner">
-            <div>
-                <div class="hero-eyebrow">Cambodia's leading STEM platform</div>
 
-                <h1 class="hero-h1">
-                    Advancing Cambodia<br>through <span class="blue">STEM education</span>
+
+    <!-- ══ HERO ══ -->
+    <section class="hero"
+        style="
+    background-image: url('https://stemcambodia.ngo/wp-content/uploads/2025/06/STEM-Group-scaled-e1750055818707.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+">
+        {{-- Dark overlay so text stays readable --}}
+        <div
+            style="
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(5, 15, 35, 0.82) 0%,
+                rgba(5, 15, 35, 0.55) 60%,
+            rgba(5, 15, 35, 0.25) 100%
+        );
+        z-index: 0;
+    ">
+        </div>
+
+        <div class="hero-inner" style="position: relative; z-index: 1;">
+            <div>
+                <div class="hero-eyebrow"
+                    style="color: #a8c8ff; border-color: rgba(168,200,255,0.35); background: rgba(168,200,255,0.12);">
+                    Cambodia's leading STEM platform
+                </div>
+
+                <h1 class="hero-h1" style="color: #ffffff;">
+                    Advancing Cambodia<br>through <span class="blue" style="color: #60a5fa;">STEM education</span>
                 </h1>
 
-                <p class="hero-sub">
+                <p class="hero-sub" style="color: rgba(255,255,255,0.78);">
                     STEMBODIAN equips Cambodian students with critical skills through high-impact educational programs —
                     driving sustainable progress across science, technology, engineering, and mathematics.
                 </p>
 
                 <div class="hero-ctas">
                     <a href="/dashboard" class="btn-primary">Start learning →</a>
-                    <a href="/aboutus" class="btn-ghost">About us</a>
                 </div>
 
-                <div class="hero-stats">
+                <div class="hero-stats" style="border-top-color: rgba(255,255,255,0.15);">
                     <div>
-                        <div class="h-stat-val">12<b>K+</b></div>
-                        <div class="h-stat-lbl">Students enrolled</div>
+                        <div class="h-stat-val" style="color: #ffffff;">12<b style="color: #60a5fa;">K+</b></div>
+                        <div class="h-stat-lbl" style="color: rgba(255,255,255,0.55);">Students enrolled</div>
                     </div>
                     <div>
-                        <div class="h-stat-val">4</div>
-                        <div class="h-stat-lbl">STEM disciplines</div>
+                        <div class="h-stat-val" style="color: #ffffff;">4</div>
+                        <div class="h-stat-lbl" style="color: rgba(255,255,255,0.55);">STEM disciplines</div>
                     </div>
                     <div>
-                        <div class="h-stat-val">98<b>%</b></div>
-                        <div class="h-stat-lbl">Satisfaction rate</div>
+                        <div class="h-stat-val" style="color: #ffffff;">98<b style="color: #60a5fa;">%</b></div>
+                        <div class="h-stat-lbl" style="color: rgba(255,255,255,0.55);">Satisfaction rate</div>
                     </div>
                 </div>
             </div>
 
             <div class="hero-visual">
-                <div class="hero-visual-box">
+                <div class="hero-visual-box"
+                    style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); backdrop-filter: blur(8px);">
                     <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/STEM-Mark.png" alt="STEM Cambodia">
                 </div>
             </div>
@@ -1043,10 +1063,21 @@
     <!-- ══ CTA ══ -->
     <section class="section section-soft">
         <div class="section-inner">
-            <div class="cta-inner">
-                <div class="cta-panel">
-                    <div class="cta-panel-title">
-                        <span class="live-dot"></span> Platform status
+            <span class="label">Community</span>
+            <h2 class="h2">What we <em>offer</em></h2>
+
+            <div class="programs-grid">
+
+                <div class="prog-card">
+                    <div class="prog-badge">Networking</div>
+                    <h3>Tech community meetups</h3>
+                    <p>Connect with developers, designers, entrepreneurs, and tech enthusiasts through regular networking
+                        events, knowledge-sharing sessions, and community gatherings across Cambodia.</p>
+
+                    <div class="prog-meta">
+                        <div class="prog-meta-item"><span>Audience</span><strong>All Levels</strong></div>
+                        <div class="prog-meta-item"><span>Format</span><strong>Hybrid</strong></div>
+                        <div class="prog-meta-item"><span>Schedule</span><strong>Monthly</strong></div>
                     </div>
                     <ul class="cta-list">
                         <li>Active students <span class="val">12,047</span></li>
@@ -1057,23 +1088,166 @@
                     </ul>
                 </div>
 
-                <div class="cta-text">
-                    <span class="label">Join today</span>
-                    <h2 class="h2">Ready to build Cambodia's <em>future?</em></h2>
-                    <p>Whether you're a student, teacher, or school — STEMBODIAN has everything you need to get started
-                        today.</p>
-                    <ul class="checklist">
-                        <li>Free access to 500+ learning modules</li>
-                        <li>Available in Khmer and English</li>
-                        <li>Curriculum-aligned with national standards</li>
-                        <li>Mentors and live workshops included</li>
-                    </ul>
-                    <div style="display:flex; gap:.75rem; flex-wrap:wrap;">
-                        <a href="/signup" class="btn-primary">Create free account</a>
-                        <a href="/news" class="btn-ghost">See latest news</a>
+                <div class="prog-card">
+                    <div class="prog-badge">Events</div>
+                    <h3>Workshops & hackathons</h3>
+                    <p>Participate in hands-on coding workshops, startup challenges, hackathons, and collaborative projects
+                        designed to strengthen practical skills and encourage innovation.</p>
+
+                    <div class="prog-meta">
+                        <div class="prog-meta-item"><span>Frequency</span><strong>Regular</strong></div>
+                        <div class="prog-meta-item"><span>Mode</span><strong>In-person</strong></div>
+                        <div class="prog-meta-item"><span>Focus</span><strong>Tech & Innovation</strong></div>
                     </div>
                 </div>
+
+                <div class="prog-card">
+                    <div class="prog-badge">Resources</div>
+                    <h3>Learning & career growth</h3>
+                    <p>Access curated learning resources, mentorship opportunities, career guidance, job postings, and
+                        industry insights to support your journey in Cambodia's growing tech ecosystem.</p>
+
+                    <div class="prog-meta">
+                        <div class="prog-meta-item"><span>Access</span><strong>Open</strong></div>
+                        <div class="prog-meta-item"><span>Language</span><strong>KH / EN</strong></div>
+                        <div class="prog-meta-item"><span>Support</span><strong>Mentorship</strong></div>
+                    </div>
+                </div>
+
             </div>
+        </div>
+    </section>
+
+    <!-- ══ SPONSORS ══ -->
+    <section class="sponsors">
+        <style>
+            .sponsors {
+                padding: 4rem 2rem;
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                background: var(--bg-soft);
+            }
+
+            .sponsors-inner {
+                max-width: var(--max-w);
+                margin: 0 auto;
+            }
+
+            .sponsors-inner>.label {
+                display: block;
+                margin-bottom: .5rem;
+            }
+
+            .sponsors-inner>.h2 {
+                margin-bottom: 2.5rem;
+            }
+
+            .sponsors-grid {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem 3rem;
+            }
+
+            .sponsor-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: .6rem;
+            }
+
+            .sponsor-item img {
+                height: 72px;
+                width: auto;
+                max-width: 140px;
+                object-fit: contain;
+                filter: grayscale(20%);
+                opacity: .85;
+                transition: opacity .2s, filter .2s;
+            }
+
+            .sponsor-item:hover img {
+                opacity: 1;
+                filter: grayscale(0%);
+            }
+
+            .sponsor-item span {
+                font-size: 10.5px;
+                color: var(--text-3);
+                text-align: center;
+                font-family: var(--mono);
+                letter-spacing: .04em;
+                text-transform: uppercase;
+            }
+        </style>
+
+        <div class="sponsors-inner">
+
+            <span class="label">Sponsors</span>
+            <h2 class="h2">Supported by our <em>partners</em></h2>
+
+            <div class="sponsors-grid">
+
+                <div class="sponsor-item">
+                    <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/MOEYS-2-254x300.png"
+                        alt="Ministry of Education Youth and Sport">
+                    <span>Ministry of Education<br>Youth and Sport</span>
+                </div>
+
+                <div class="sponsor-item">
+                    <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/MOE-1-253x300.png"
+                        alt="Ministry of Environment">
+                    <span>Ministry of Environment</span>
+                </div>
+
+                <div class="sponsor-item">
+                    <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/PTC.png" alt="PTC">
+                    <span>P.T.C</span>
+                </div>
+
+                <div class="sponsor-item">
+                    <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/MISTI.png"
+                        alt="Ministry of Industry Science Technology and Innovation">
+                    <span>Ministry of Industry,<br>Science & Innovation</span>
+                </div>
+
+                <div class="sponsor-item">
+                    <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/cropped-logo-300x300.png"
+                        alt="RUPP">
+                    <span>RUPP</span>
+                </div>
+
+                <div class="sponsor-item">
+                    <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/British-Embassy-1024x840.png"
+                        alt="British Embassy Phnom Penh">
+                    <span>British Embassy<br>Phnom Penh</span>
+                </div>
+
+                <div class="sponsor-item">
+                    <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/Untitled-design-8.png" alt="WCS">
+                    <span>WCS</span>
+                </div>
+
+                <div class="sponsor-item">
+                    <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/Logo1-04.png" alt="Kilat Events">
+                    <span>Kilat Events</span>
+                </div>
+
+                <div class="sponsor-item">
+                    <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/Smart-Logo-768x501.png"
+                        alt="Smart Axiata">
+                    <span>Smart Axiata</span>
+                </div>
+
+                <div class="sponsor-item">
+                    <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/Logo-1024x346.jpg"
+                        alt="AEON Mall Mean Chey">
+                    <span>AEON MALL<br>Mean Chey</span>
+                </div>
+
+            </div>
+
         </div>
     </section>
 

@@ -53,12 +53,13 @@
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: var(--font);
+
             font-size: 15px;
             line-height: 1.65;
             min-height: 100vh;
             padding-top: var(--nav-h);
             -webkit-font-smoothing: antialiased;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         /* ── NAV ── */
@@ -277,11 +278,9 @@
 
         <div class="nav-links">
             <a class="nav-link active" href="{{ url('') }}">Home</a>
-            <a class="nav-link" href="/aboutus">About us</a>
             <a class="nav-link" href="/news">News</a>
-            <a class="nav-link" href="/bookmarks">Bookmarks</a>
             <a class="nav-link" href="/signup">Sign up</a>
-            <a class="nav-btn" href="/dashboard">Dashboard →</a>
+            <a class="nav-btn" href="/dashboard">Dashboard</a>
         </div>
     </nav>
 
@@ -300,7 +299,6 @@
             <div class="footer-col">
                 <h4>Navigate</h4>
                 <a href="/">Home</a>
-                <a href="/aboutus">About us</a>
                 <a href="/news">News & events</a>
                 <a href="/bookmarks">Bookmarks</a>
             </div>
