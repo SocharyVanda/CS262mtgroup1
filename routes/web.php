@@ -36,6 +36,10 @@ Route::put('/edit-post/{post}', [PostController::class, 'updatePost']);
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
 
 
+Route::get('/news', fn() => view('news'));
+Route::get('/bookmarks', fn() => view('bookmarks'));
+
+
 
 // Route::get('/', [UserController::class, 'index']);
 // Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware('auth');

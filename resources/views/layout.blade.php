@@ -135,12 +135,15 @@
 <body>
 
     <nav class="site-nav">
-        <a href="{{ url('') }}" class="nav-wordmark">STEM<span>/Cambodia</span></a>
+        <a href="{{ url('') }}" class="nav-wordmark">
+            <span> <img src="{{ asset('img/logosteam.png') }}" alt="logo" style="width:60px;height:auto;"></span>
+            STEM<span> Cambodia</span></a>
 
         <div class="nav-links">
             <a class="nav-link-item active" href="{{ url('') }}">Home</a>
-            <a class="nav-link-item" href="#">News</a>
-            <a class="nav-link-item" href="#">Bookmarks</a>
+            <a class="nav-link-item" href="/aboutus">About Us</a>
+            <a class="nav-link-item" href="/news">News</a>
+            <a class="nav-link-item" href="/bookmarks">Bookmarks</a>
             <a class="nav-link-item" href="/signup">Sign up</a>
             <a class="nav-link-pill" href="/dashboard">Dashboard</a>
         </div>
