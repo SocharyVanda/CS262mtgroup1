@@ -87,7 +87,7 @@ class PostController extends Controller
     }
     public function showEditScreen(Post $post)
     {
-        if (auth()->id() !== $post->user_id) {
+        if (Auth::id() !== $post->user_id) {
             return redirect('/');
         }
         return view('edit-post', ['post' => $post]);
@@ -95,7 +95,7 @@ class PostController extends Controller
 
     public function updatePost(Post $post, Request $request)
     {
-        if (auth()->id() !== $post->user_id) {
+        if (Auth::id() !== $post->user_id) {
             return redirect('/dashboard');
         }
         $incomingFields = $request->validate([
@@ -111,7 +111,7 @@ class PostController extends Controller
 
     public function deletePost(Post $post)
     {
-        if (auth()->id() === $post->user_id) {
+        if (Auth::id() === $post->user_id) {
             $post->delete();
         }
         return redirect('/dashboard');
