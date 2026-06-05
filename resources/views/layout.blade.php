@@ -80,24 +80,21 @@
     </main>
 
 <footer class="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline w-full rounded-none">
-    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 with px-[10px]">
         
-        <!-- Grid Layout for Desktop, Stacked for Mobile -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-6">
             <div class="space-y-4 col-span-full">
                 
-                <!-- Logo & Brand Header -->
                 <div class="flex items-center gap-2">
                     <span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-size: 24px;">school</span>
                     <span class="font-title-md text-title-md font-bold text-on-surface dark:text-on-primary-container">STEMBODIAN</span>
                 </div>
                 
-                <!-- Description -->
+
                 <p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant leading-relaxed max-w-xl">
                     Empowering Cambodia's next generation through accessible STEM education.
                 </p>
                 
-                <!-- Navigation Links -->
                 <div class="flex flex-wrap gap-6 pt-2">
                     <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
                     <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Programs</a>
@@ -107,8 +104,7 @@
  
             </div>
         </div>
-        
-        <!-- Bottom Bar -->
+
         <div class="pt-8 border-t border-outline-variant dark:border-outline flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant text-center md:text-left">
                 &copy; 2026 STEMBODIAN.
