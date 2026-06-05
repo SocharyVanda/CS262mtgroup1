@@ -870,53 +870,6 @@
         </div>
     </section>
 
-    <!-- ══ TICKER ══ -->
-    <div class="ticker">
-        <div class="ticker-label">Updates</div>
-        <div class="ticker-scroll">
-            <div class="ticker-track">
-                <span class="ticker-item">New: Robotics curriculum launched</span>
-                <span class="ticker-item">Science olympiad registrations open</span>
-                <span class="ticker-item">AI literacy workshop — Phnom Penh</span>
-                <span class="ticker-item">Coding bootcamp applications closing soon</span>
-                <span class="ticker-item">Partnership with Royal University of Phnom Penh</span>
-                <span class="ticker-item">Mathematics competition results published</span>
-                <span class="ticker-item">New: Robotics curriculum launched</span>
-                <span class="ticker-item">Science olympiad registrations open</span>
-                <span class="ticker-item">AI literacy workshop — Phnom Penh</span>
-                <span class="ticker-item">Coding bootcamp applications closing soon</span>
-                <span class="ticker-item">Partnership with Royal University of Phnom Penh</span>
-                <span class="ticker-item">Mathematics competition results published</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ══ STATS BAR ══ -->
-    <div class="stats-bar">
-        <div class="stats-bar-inner">
-            <div class="stat-cell">
-                <div class="stat-num green">12,000</div>
-                <div class="stat-desc">Students reached across Cambodia</div>
-                <div class="stat-note">↑ 34% YoY growth</div>
-            </div>
-            <div class="stat-cell">
-                <div class="stat-num blue">200+</div>
-                <div class="stat-desc">Schools partnered nationwide</div>
-                <div class="stat-note">25 provinces covered</div>
-            </div>
-            <div class="stat-cell">
-                <div class="stat-num amber">500+</div>
-                <div class="stat-desc">Interactive learning modules</div>
-                <div class="stat-note">Curriculum-aligned content</div>
-            </div>
-            <div class="stat-cell">
-                <div class="stat-num purple">98%</div>
-                <div class="stat-desc">Student satisfaction score</div>
-                <div class="stat-note">Based on 2024 survey</div>
-            </div>
-        </div>
-    </div>
-
     <!-- ══ SUBJECTS ══ -->
     <section class="section">
         <div class="section-inner">
@@ -1081,42 +1034,6 @@
         </div>
     </section>
 
-    <!-- ══ CTA ══ -->
-    <section class="section section-soft">
-        <div class="section-inner">
-            <div class="cta-inner">
-                <div class="cta-panel">
-                    <div class="cta-panel-title">
-                        <span class="live-dot"></span> Platform status
-                    </div>
-                    <ul class="cta-list">
-                        <li>Active students <span class="val">12,047</span></li>
-                        <li>Modules available <span class="val">523</span></li>
-                        <li>Schools connected <span class="val">200+</span></li>
-                        <li>Registration <span class="val">FREE</span></li>
-                        <li>Languages <span class="val">KH / EN</span></li>
-                    </ul>
-                </div>
-
-                <div class="cta-text">
-                    <span class="label">Join today</span>
-                    <h2 class="h2">Ready to build Cambodia's <em>future?</em></h2>
-                    <p>Whether you're a student, teacher, or school — STEMBODIAN has everything you need to get started
-                        today.</p>
-                    <ul class="checklist">
-                        <li>Free access to 500+ learning modules</li>
-                        <li>Available in Khmer and English</li>
-                        <li>Curriculum-aligned with national standards</li>
-                        <li>Mentors and live workshops included</li>
-                    </ul>
-                    <div style="display:flex; gap:.75rem; flex-wrap:wrap;">
-                        <a href="/signup" class="btn-primary">Create free account</a>
-                        <a href="/news" class="btn-ghost">See latest news</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ══ PARTNERS ══ -->
     <section style="padding: 2.5rem 2rem; border-top: 1px solid var(--border);">
