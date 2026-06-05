@@ -16,6 +16,10 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
+Route::get('/science', function () {
+    return view('science');
+});
+
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
