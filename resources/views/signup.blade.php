@@ -34,7 +34,7 @@
 
         /* ─ LOGGED IN ─ */
         .logout-box {
-            background: var(--clr-surface);
+            background: var(--bg);
             border: 1px solid var(--clr-border);
             border-radius: var(--radius);
             padding: 2rem 2.5rem;
