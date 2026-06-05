@@ -53,8 +53,26 @@ use App\Models\Post;
 // }
 class PostController extends Controller
 {
+    // public function createPost(Request $request)
+    // {
+    //     $incomingFields = $request->validate([
+    //         'title' => 'required',
+    //         'body' => 'required'
+    //     ]);
+
+    //     $incomingFields['title'] = strip_tags($incomingFields['title']);
+    //     $incomingFields['body'] = strip_tags($incomingFields['body']);
+    //     $incomingFields['user_id'] = auth()->id();
+
+    //     Post::create($incomingFields);
+    //     return redirect('/dashboard');
+    // }
     public function createPost(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect('/dashboard')->with('message', 'Please log in first to publish a post.');
+        }
+
         $incomingFields = $request->validate([
             'title' => 'required',
             'body' => 'required'
@@ -62,12 +80,11 @@ class PostController extends Controller
 
         $incomingFields['title'] = strip_tags($incomingFields['title']);
         $incomingFields['body'] = strip_tags($incomingFields['body']);
-        $incomingFields['user_id'] = auth()->id();
+        $incomingFields['user_id'] = Auth::id();
 
         Post::create($incomingFields);
         return redirect('/dashboard');
     }
-
     public function showEditScreen(Post $post)
     {
         if (auth()->id() !== $post->user_id) {

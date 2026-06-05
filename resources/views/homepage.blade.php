@@ -339,7 +339,7 @@
     </div>
 
     <!-- ── PAGE BODY ── -->
-    <div class="page-body">
+    {{-- <div class="page-body">
 
         @auth
             <!-- ─ CREATE POST ─ -->
@@ -360,7 +360,7 @@
             <div class="section-gap">
                 <p class="section-label">All Posts</p>
                 <div class="stack">
-                    @foreach ($posts as $post)
+                    @foreach ($posts ?? [] as $post)
                         <div class="post-card">
                             <p class="post-card-title">{{ $post['title'] }}</p>
                             <p class="post-card-by mono">by {{ $post->user->name }}</p>
@@ -400,20 +400,20 @@
                         <span class="subject-name">Mathematics</span>
                     </a>
                 </div>
-            </div>
+            </div> --}}
 
-            <!-- ─ FEATURED ─ -->
-            <div class="section-gap">
-                <p class="section-label">Featured</p>
-                <div class="featured-card">
-                    <span class="featured-tag">Spotlight</span>
-                    <p class="featured-title">Special title treatment</p>
-                    <p class="featured-body">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn-stem">Read more</a>
-                </div>
-            </div>
+    <!-- ─ FEATURED ─ -->
+    {{-- <div class="section-gap">
+        <p class="section-label">Featured</p>
+        <div class="featured-card">
+            <span class="featured-tag">Spotlight</span>
+            <p class="featured-title">Special title treatment</p>
+            <p class="featured-body">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn-stem">Read more</a>
+        </div>
+    </div>
 
-        @endauth
+@endauth --}}
 
     </div>
 

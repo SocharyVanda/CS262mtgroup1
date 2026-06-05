@@ -144,7 +144,20 @@
             <a class="nav-link-pill" href="/dashboard">Dashboard</a>
         </div>
     </nav>
-
+    @if (session('message'))
+        <div
+            style="
+    background: #e8f5ee;
+    border-bottom: 1px solid #a7d7b8;
+    color: #1a7a4a;
+    font-size: 13.5px;
+    font-family: 'DM Sans', sans-serif;
+    padding: 0.65rem 2rem;
+    text-align: center;
+">
+            {{ session('message') }}
+        </div>
+    @endif
     @yield('content')
 
 </body>
