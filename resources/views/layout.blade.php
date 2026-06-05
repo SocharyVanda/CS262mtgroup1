@@ -116,9 +116,12 @@
 </head>
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-16">
 
-    <nav class="bg-surface dark:bg-inverse-surface shadow-sm fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto">
-        <div class="flex items-center gap-sm">
-            <span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">STEMBODIAN</span>
+<nav class="bg-surface dark:bg-inverse-surface shadow-sm fixed top-0 left-0 w-full z-50 h-16 border-b border-surface-container-low dark:border-surface-variant">
+    
+    <div class="w-full h-full px-6 md:px-12 flex justify-between items-center">
+        
+        <div class="flex items-center">
+            <span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">STEMBODIAN</span>
         </div>
         <div class="hidden md:flex gap-md">
             <a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-bold text-body-md font-body-md transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant px-2 rounded-t-sm" href="{{ url('') }}">Home</a>
@@ -170,23 +173,50 @@
         @yield('content')
     </main>
 
-    <footer class="mt-auto">
-        <div class="card rounded-none border-x-0 border-b-0">
-            <div class="card-header">
-                STEMBODIA
-            </div>
-            <div class="card-body">
-                <figure>
-                    <blockquote class="blockquote">
-                        <p>A well-known quote, contained in a blockquote element.</p>
-                    </blockquote>
-                    <figcaption class="blockquote-footer">
-                        Someone famous in <cite title="Source Title">Source Title</cite>
-                    </figcaption>
-                </figure>
+<footer class="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline w-full rounded-none">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6">
+        
+        <!-- Grid Layout for Desktop, Stacked for Mobile -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-6">
+            <div class="space-y-4 col-span-full">
+                
+                <!-- Logo & Brand Header -->
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-size: 24px;">school</span>
+                    <span class="font-title-md text-title-md font-bold text-on-surface dark:text-on-primary-container">STEMBODIAN</span>
+                </div>
+                
+                <!-- Description -->
+                <p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant leading-relaxed max-w-xl">
+                    Empowering Cambodia's next generation through accessible STEM education.
+                </p>
+                
+                <!-- Navigation Links -->
+                <div class="flex flex-wrap gap-6 pt-2">
+                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Programs</a>
+                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+                    <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+                </div>
+ 
             </div>
         </div>
-    </footer>
+        
+        <!-- Bottom Bar -->
+        <div class="pt-8 border-t border-outline-variant dark:border-outline flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant text-center md:text-left">
+                &copy; 2026 STEMBODIAN.
+            </p>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-secondary" style="font-size: 18px;">location_on</span>
+                    <span class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant">Phnom Penh, Cambodia</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
 
 </body>
 </html>
