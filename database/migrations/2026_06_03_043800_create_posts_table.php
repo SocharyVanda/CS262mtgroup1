@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('published_at')->nullable();
             $table->integer('views')->default(0);
             $table->timestamps();
-
+            $table->longText('body');
             $table->index(['status', 'published_at']);
         });
     }
