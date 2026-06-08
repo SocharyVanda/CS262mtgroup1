@@ -498,4 +498,46 @@
     </div>
 </div>
 
-@endsection
+<!-- OLDER ARTICLES -->
+<div class="section-gap">
+    <p class="section-label">Earlier this year</p>
+    <div class="news-grid">
+
+        <a class="news-card" href="#">
+            <div class="news-card-thumb thumb-science">
+                <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/ACSF-Logo-4.png"
+                     alt="ASEAN Space Research" style="width:100%;height:100%;object-fit:contain;padding:8px;">
+            </div>
+            <div class="news-card-body">
+                <span class="news-card-tag">Science</span>
+                <p class="news-card-title">Cambodia Joins ASEAN Space Research Network as Observer Member</p>
+                <p class="news-card-meta">Feb 2026 · 4 min read</p>
+            </div>
+        </a>
+
+        <a class="news-card" href="#">
+            <div class="news-card-thumb thumb-eng">
+                <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/cropped-STEM-Mark.png"
+                     alt="Bridge Competition" style="width:100%;height:100%;object-fit:contain;padding:8px;">
+            </div>
+            <div class="news-card-body">
+                <span class="news-card-tag">Engineering</span>
+                <p class="news-card-title">Bridge Design Competition Draws 200 University Teams Nationwide</p>
+                <p class="news-card-meta">Jan 2026 · 2 min read</p>
+            </div>
+        </a>
+
+        <a class="news-card" href="#">
+            <div class="news-card-thumb thumb-math">
+                <img src="https://stemcambodia.ngo/wp-content/uploads/2025/06/Untitled-design-3.png"
+                     alt="Data Science Degree" style="width:100%;height:100%;object-fit:contain;padding:8px;">
+            </div>
+            <div class="news-card-body">
+                <span class="news-card-tag">Mathematics</span>
+                <p class="news-card-title">New Data Science Degree Launched at Norton University Phnom Penh</p>
+                <p class="news-card-meta">Jan 2026 · 3 min read</p>
+            </div>
+        </a>
+
+    </div>
+</div>

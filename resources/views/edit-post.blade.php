@@ -1,167 +1,364 @@
 @extends('layout')
+
 @section('title', 'STEM Cambodia - Edit Post')
+
 @section('content')
 
     <style>
-        .edit-wrap {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem 5rem;
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+        .edit-root {
+            min-height: calc(100vh - var(--nav-h));
+            background: #ffffff;
+            color: #0f1117;
+            font-family: 'Instrument Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+
+        .radial-glow {
+            position: absolute;
+            top: -160px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .page-body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1.5rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .edit-container {
+            width: 100%;
+            max-width: 540px;
         }
 
         .edit-eyebrow {
-            font-family: 'DM Mono', monospace;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .eyebrow-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 100px;
+            padding: 4px 14px;
+            font-family: 'Geist Mono', monospace;
             font-size: 11px;
+            color: #2563eb;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .eyebrow-badge::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #3b82f6;
+        }
+
+        .auth-headline {
+            font-size: 26px;
+            font-weight: 600;
+            color: #0f1117;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .auth-headline span {
+            color: #2563eb;
+        }
+
+        .auth-subline {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .edit-panel {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+            padding: 2.25rem 2.5rem;
+        }
+
+        .panel-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1.25rem;
+        }
+
+        .panel-label-text {
+            font-family: 'Geist Mono', monospace;
+            font-size: 10px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--clr-muted);
-            margin-bottom: 0.5rem;
+            color: #9ca3af;
+            white-space: nowrap;
         }
 
-        .edit-heading {
-            font-size: 1.35rem;
+        .panel-label-line {
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        .panel-title {
+            font-size: 17px;
             font-weight: 600;
-            color: var(--clr-text);
-            margin-bottom: 2rem;
+            color: #0f1117;
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
         }
 
-        .edit-card {
-            background: var(--clr-surface);
-            border: 1px solid var(--clr-border);
-            border-radius: var(--radius);
-            padding: 2rem;
+        .panel-sub {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            line-height: 1.55;
         }
 
-        .edit-form {
+        .alert-success {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 12px;
+            color: #15803d;
+            margin-bottom: 14px;
+        }
+
+        .alert-stem {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 12px;
+            color: #b91c1c;
+            margin-bottom: 14px;
+        }
+
+        .alert-stem ul {
+            margin: 0;
+            padding-left: 1rem;
+        }
+
+        .form-stack {
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
+            gap: 10px;
         }
 
-        .field-label {
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .input-label {
             font-size: 12px;
             font-weight: 500;
-            letter-spacing: 0.04em;
-            color: var(--clr-muted);
-            margin-bottom: 0.3rem;
-            display: block;
+            color: #374151;
+            letter-spacing: 0.01em;
         }
 
         .stem-input {
             width: 100%;
-            background: var(--clr-bg);
-            border: 1px solid var(--clr-border);
-            border-radius: 6px;
-            padding: 0.65rem 0.9rem;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px;
-            color: var(--clr-text);
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 10px 13px;
+            font-size: 13px;
+            color: #0f1117;
+            font-family: 'Instrument Sans', sans-serif;
             outline: none;
-            transition: border-color 0.15s;
-            resize: vertical;
+            transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
             box-sizing: border-box;
+            resize: vertical;
+        }
+
+        .stem-input::placeholder {
+            color: #d1d5db;
         }
 
         .stem-input:focus {
-            border-color: var(--clr-accent);
-        }
-
-        .edit-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-top: 0.5rem;
-        }
-
-        .btn-stem {
-            font-size: 13.5px;
-            font-weight: 500;
-            color: var(--clr-surface);
-            background: var(--clr-accent);
-            border: none;
-            border-radius: 6px;
-            padding: 0.55rem 1.25rem;
-            cursor: pointer;
-            transition: opacity 0.15s;
-        }
-
-        .btn-stem:hover {
-            opacity: 0.85;
-        }
-
-        .btn-cancel {
-            font-size: 13.5px;
-            font-weight: 400;
-            color: var(--clr-muted);
-            background: transparent;
-            border: 1px solid var(--clr-border);
-            border-radius: 6px;
-            padding: 0.55rem 1.1rem;
-            text-decoration: none;
-            transition: border-color 0.15s, color 0.15s;
-        }
-
-        .btn-cancel:hover {
-            border-color: var(--clr-muted);
-            color: var(--clr-text);
+            background: #fff;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .error-msg {
             font-size: 12px;
-            color: #e05252;
-            margin-top: 0.25rem;
+            color: #b91c1c;
+            margin-top: 4px;
         }
 
-        .alert-success {
+        .edit-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .btn-stem {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 8px;
             font-size: 13px;
-            color: #2e7d32;
-            background: #f0faf0;
-            border: 1px solid #a5d6a7;
-            border-radius: 6px;
-            padding: 0.6rem 0.9rem;
-            margin-bottom: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            font-family: 'Instrument Sans', sans-serif;
+            letter-spacing: 0.01em;
+            background: #2563eb;
+            color: #fff;
+            transition: opacity 0.15s, transform 0.1s;
+        }
+
+        .btn-stem:hover {
+            opacity: 0.88;
+        }
+
+        .btn-stem:active {
+            transform: scale(0.99);
+        }
+
+        .btn-cancel {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid #e5e7eb;
+            font-family: 'Instrument Sans', sans-serif;
+            letter-spacing: 0.01em;
+            background: #fff;
+            color: #374151;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s, border-color 0.15s, transform 0.1s;
+        }
+
+        .btn-cancel:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+        }
+
+        .btn-cancel:active {
+            transform: scale(0.99);
+        }
+
+        @media (max-width: 600px) {
+            .edit-panel {
+                padding: 1.75rem 1.5rem;
+            }
+
+            .edit-actions {
+                flex-direction: column;
+            }
         }
     </style>
 
-    <div class="edit-wrap">
-        <p class="edit-eyebrow">Posts</p>
-        <h1 class="edit-heading">Edit post</h1>
+    <div class="edit-root">
+        <div class="grid-bg"></div>
+        <div class="radial-glow"></div>
 
-        @auth
-            <div class="edit-card">
+        <div class="page-body">
+            <div class="edit-container">
 
-                @if (session('success'))
-                    <div class="alert-success">{{ session('success') }}</div>
-                @endif
+                <div class="edit-eyebrow">
+                    <div class="eyebrow-badge">Posts</div>
+                    <div class="auth-headline">Edit your <span>post</span></div>
+                    <div class="auth-subline">Make changes below and save when you're ready.</div>
+                </div>
 
-                <form action="/edit-post/{{ $post->id }}" method="POST" class="edit-form">
-                    @csrf
-                    @method('PUT')
+                @auth
+                    <div class="edit-panel">
 
-                    <div>
-                        <label class="field-label" for="edit-title">Title</label>
-                        <input id="edit-title" type="text" name="title" class="stem-input"
-                            value="{{ old('title', $post->title) }}">
-                        @error('title')
-                            <p class="error-msg">{{ $message }}</p>
-                        @enderror
+                        <div class="panel-label">
+                            <span class="panel-label-text">Editing</span>
+                            <div class="panel-label-line"></div>
+                        </div>
+                        <div class="panel-title">Update post</div>
+                        <div class="panel-sub">Changes will be published immediately after saving.</div>
+
+                        @if (session('success'))
+                            <div class="alert-success">{{ session('success') }}</div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="alert-stem">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <form action="/edit-post/{{ $post->id }}" method="POST" class="form-stack">
+                            @csrf
+                            @method('PUT')
+
+                            <div class="input-group">
+                                <label class="input-label" for="edit-title">Title</label>
+                                <input id="edit-title" type="text" name="title" class="stem-input" placeholder="Post title"
+                                    value="{{ old('title', $post->title) }}">
+                                @error('title')
+                                    <p class="error-msg">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="input-group">
+                                <label class="input-label" for="edit-body">Content</label>
+                                <textarea id="edit-body" name="body" class="stem-input" rows="7" placeholder="Write your post content here…">{{ old('body', $post->body) }}</textarea>
+                                @error('body')
+                                    <p class="error-msg">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="edit-actions">
+                                <button type="submit" class="btn-stem">Save changes →</button>
+                                <a href="{{ url('') }}" class="btn-cancel">Cancel</a>
+                            </div>
+
+                        </form>
                     </div>
+                @endauth
 
-                    <div>
-                        <label class="field-label" for="edit-body">Content</label>
-                        <textarea id="edit-body" name="body" class="stem-input" rows="8">{{ old('body', $post->body) }}</textarea>
-                        @error('body')
-                            <p class="error-msg">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="edit-actions">
-                        <button type="submit" class="btn-stem">Save changes</button>
-                        <a href="{{ url('') }}" class="btn-cancel">Cancel</a>
-                    </div>
-                </form>
             </div>
-        @endauth
+        </div>
     </div>
 
 @endsection
