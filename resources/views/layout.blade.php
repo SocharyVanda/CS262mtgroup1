@@ -279,6 +279,7 @@
         <div class="nav-links">
             <a class="nav-link active" href="{{ url('') }}">Home</a>
             <a class="nav-link" href="/news">News</a>
+            <a class="nav-link" href="/posts">Posts</a>
             <a class="nav-link" href="/signup">Sign up</a>
             <a class="nav-btn" href="/dashboard">Dashboard</a>
         </div>
