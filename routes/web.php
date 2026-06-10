@@ -4,7 +4,8 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PostController;
+
+use App\Http\Controllers\NewsController;
 
 Route::get('/', fn() => view('homepage'));
 Route::get('/signup', fn() => view('signup'));
@@ -13,7 +14,7 @@ Route::get('/technology', fn() => view('technology'));
 Route::get('/mathematics', fn() => view('mathematics'));
 Route::get('/engineering', fn() => view('engineering'));
 Route::get('/aboutus', fn() => view('aboutus'));
-Route::get('/news', fn() => view('news'));
+Route::get('/news', [NewsController::class, 'index']);
 Route::get('/bookmarks', fn() => view('bookmarks'));
 
 // ── AUTH ──
@@ -35,6 +36,15 @@ Route::get('/posts', function () {
     $posts = Post::with('user')->latest()->get();
     return view('posts', compact('posts'));
 });
+
+// Route::get('/news', function () {
+//     $news = Post::with('user')->latest()->get();
+//     return view('posts', compact('news'));
+// });
+
+// web.php
+Route::get('/news', [NewsController::class, 'index']);
+
 
 // ── POST CRUD ──
 Route::post('/create-post', [PostController::class, 'createPost']);
