@@ -9,243 +9,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Introduction to Python Programming</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            body {
-                background-color: #ffffff;
-                font-family: Georgia, 'Times New Roman', serif;
-                color: #1a1a1a;
-                line-height: 1.7;
-            }
-
-            .page-wrapper {
-                display: flex;
-                justify-content: center;
-                padding: 60px 20px;
-            }
-
-            .article {
-                width: 100%;
-                max-width: 720px;
-            }
-
-            /* Tags */
-            .tags {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                margin-bottom: 20px;
-            }
-
-            .tag {
-                font-family: Arial, sans-serif;
-                font-size: 13px;
-                padding: 4px 12px;
-                border-radius: 20px;
-                font-weight: 500;
-            }
-
-            .tag-tech {
-                background-color: #e8f0e9;
-                color: #2d6a4f;
-                border: 1px solid #b7d5be;
-            }
-
-            .tag-beginner {
-                background-color: #e8f0e9;
-                color: #2d6a4f;
-                border: 1px solid #b7d5be;
-            }
-
-            .read-time {
-                font-family: Arial, sans-serif;
-                font-size: 13px;
-                color: #777;
-            }
-
-            /* Title */
-            h1 {
-                font-size: 42px;
-                font-weight: 800;
-                line-height: 1.2;
-                margin-bottom: 16px;
-                color: #111;
-            }
-
-            /* Meta */
-            .meta {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                font-family: Arial, sans-serif;
-                font-size: 14px;
-                color: #555;
-                padding-bottom: 20px;
-                border-bottom: 1px solid #ddd;
-                margin-bottom: 30px;
-            }
-
-            .meta .author {
-                font-weight: 700;
-                color: #111;
-            }
-
-            .bookmark-icon {
-                font-size: 20px;
-                cursor: pointer;
-            }
-
-            /* Body text */
-            p {
-                font-size: 17px;
-                margin-bottom: 24px;
-                color: #222;
-            }
-
-            /* Tip box */
-            .tip-box {
-                background-color: #f0faf2;
-                border-left: 4px solid #4caf7d;
-                border-radius: 4px;
-                padding: 16px 20px;
-                margin-bottom: 30px;
-                font-size: 16px;
-                color: #333;
-            }
-
-            .tip-box .tip-icon {
-                margin-right: 6px;
-            }
-
-            /* Headings */
-            h2 {
-                font-size: 26px;
-                font-weight: 800;
-                margin-top: 10px;
-                margin-bottom: 14px;
-                color: #111;
-            }
-
-            /* List */
-            ul {
-                list-style: none;
-                padding: 0;
-                margin-bottom: 30px;
-            }
-
-            ul li {
-                font-size: 17px;
-                padding: 6px 0;
-                color: #222;
-                display: flex;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            ul li::before {
-                content: "•";
-                color: #333;
-                font-size: 18px;
-                margin-top: 1px;
-                flex-shrink: 0;
-            }
-
-            ul li strong {
-                font-weight: 700;
-            }
-
-            /* Code block */
-            .code-block {
-                background-color: #f0ede6;
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                padding: 18px 20px;
-                margin-bottom: 30px;
-                font-family: 'Courier New', Courier, monospace;
-                font-size: 14px;
-                line-height: 1.8;
-                color: #555;
-                overflow-x: auto;
-            }
-
-            .code-block .c-comment {
-                color: #999;
-                font-style: italic;
-            }
-
-            .code-block .c-string {
-                color: #c0392b;
-            }
-
-            .code-block .c-number {
-                color: #c0392b;
-            }
-
-            .code-block .c-keyword {
-                color: #2471a3;
-                font-weight: bold;
-            }
-
-            .code-block .c-func {
-                color: #e67e22;
-            }
-
-            .code-block .c-var {
-                color: #c0392b;
-            }
-
-            /* Divider */
-            .divider {
-                border: none;
-                border-top: 1px solid #ddd;
-                margin: 40px 0 30px;
-            }
-
-            /* Post navigation */
-            .post-nav {
-                display: flex;
-                gap: 16px;
-            }
-
-            .post-nav a {
-                flex: 1;
-                display: block;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                padding: 16px 20px;
-                text-decoration: none;
-                color: inherit;
-                background: #fff;
-            }
-
-            .post-nav a:hover {
-                background: #f0ede6;
-            }
-
-            .post-nav .nav-label {
-                font-family: Arial, sans-serif;
-                font-size: 11px;
-                color: #999;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                margin-bottom: 6px;
-            }
-
-            .post-nav .nav-title {
-                font-size: 16px;
-                font-weight: 700;
-                color: #111;
-            }
-
-            .post-nav .nav-next {
-                text-align: right;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ asset('css/pillar.css') }}">
     </head>
 
     <body>
@@ -335,7 +99,37 @@
                     communities in software. Start small, write a few scripts, and you'll be building real applications in
                     no time.</p>
 
-
+                <div class="posts-section">
+                    @if (isset($posts) && count($posts) > 0)
+                        <div class="section-gap">
+                            <p class="section-label">More articles</p>
+                            <div class="news-grid">
+                                @foreach ($posts as $post)
+                                    <a href="{{ url('/news/' . $post->slug)}}" class="post-link">
+                                        <div class="news-card">
+                                            <div class="news-card-thumb">
+                                                @if ($post->image)
+                                                    <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
+                                                @else
+                                                    <span class="material-symbols-outlined placeholder-icon">article</span>
+                                                @endif
+                                            </div>
+                                            <div class="news-card-body">
+                                                <p class="news-card-tag">Article</p>
+                                                <p class="news-card-title">{{ $post->title }}</p>
+                                                <p class="news-card-excerpt">{{ Str::limit($post->body, 80) }}</p>
+                                                <p class="news-card-meta">
+                                                    {{ $post->user->name ?? 'Unknown' }} ·
+                                                    {{ $post->created_at->format('d M Y') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </article>
         </div>
 

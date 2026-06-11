@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title', $post->title)
 @section('content')
+<<<<<<< HEAD
 
     <style>
         .page-wrapper {
@@ -171,6 +172,10 @@
             text-decoration: underline;
         }
     </style>
+=======
+<link rel="stylesheet" href="{{ asset('css/pillar.css') }}">
+    
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
 
     <div class="page-wrapper">
         <article class="article">

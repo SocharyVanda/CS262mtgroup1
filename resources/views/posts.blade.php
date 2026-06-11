@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title', 'Posts')
 @section('content')
+<<<<<<< HEAD
 
     <style>
         .page-wrap {
@@ -351,6 +352,9 @@
             opacity: 0.9;
         }
     </style>
+=======
+<link rel="stylesheet" href="{{ asset('css/post.css') }}">
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
 
     <div class="page-wrap">
 
@@ -361,6 +365,7 @@
         </div>
 
         <!-- FILTER BAR -->
+<<<<<<< HEAD
         <div class="filter-bar">
             <a class="filter-btn active" href="#">All</a>
             <a class="filter-btn" href="#">Science</a>
@@ -369,6 +374,15 @@
             <a class="filter-btn" href="#">Mathematics</a>
             <a class="filter-btn" href="#">Environment</a>
             <a class="filter-btn" href="#">Health</a>
+=======
+        @php $selectedCategory = $category ?? null; @endphp
+        <div class="filter-bar">
+            <a class="filter-btn {{ !$selectedCategory ? 'active' : '' }}" href="{{ url('/posts') }}">All</a>
+            <a class="filter-btn {{ $selectedCategory === 'Science' ? 'active' : '' }}" href="{{ url('/posts?category=Science') }}">Science</a>
+            <a class="filter-btn {{ $selectedCategory === 'Technology' ? 'active' : '' }}" href="{{ url('/posts?category=Technology') }}">Technology</a>
+            <a class="filter-btn {{ $selectedCategory === 'Engineering' ? 'active' : '' }}" href="{{ url('/posts?category=Engineering') }}">Engineering</a>
+            <a class="filter-btn {{ $selectedCategory === 'Mathematics' ? 'active' : '' }}" href="{{ url('/posts?category=Mathematics') }}">Mathematics</a>
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
         </div>
 
         @if (isset($posts) && count($posts) > 0)
@@ -386,7 +400,11 @@
                 </div>
                 <div class="featured-body">
                     <p class="article-tag">Featured</p>
+<<<<<<< HEAD
                     <a href="#" class="article-title">{{ $featured->title }}</a>
+=======
+                    <a href="{{ url('/news/' .$featured->slug) }}" class="article-title">{{ $featured->title }}</a>
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
                     <p class="article-excerpt">{{ Str::limit($featured->body, 160) }}</p>
                     <div class="article-meta">
                         <span>{{ $featured->user->name ?? 'Unknown' }}</span>
@@ -402,6 +420,10 @@
                     <p class="section-label">More articles</p>
                     <div class="news-grid">
                         @foreach ($posts->skip(1) as $post)
+<<<<<<< HEAD
+=======
+                        <a href="{{ url('/news/' .$post->slug) }}">
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
                             <div class="news-card">
                                 <div class="news-card-thumb">
                                     @if ($post->image)
@@ -420,6 +442,10 @@
                                     </p>
                                 </div>
                             </div>
+<<<<<<< HEAD
+=======
+                        </a>
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
                         @endforeach
                     </div>
                 </div>

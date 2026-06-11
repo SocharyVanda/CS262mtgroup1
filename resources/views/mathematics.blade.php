@@ -9,6 +9,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Introduction to mathematics</title>
+<<<<<<< HEAD
         <style>
             * {
                 margin: 0;
@@ -371,6 +372,9 @@
                 text-align: right;
             }
         </style>
+=======
+        <link rel="stylesheet" href="{{ asset('css/pillar.css') }}">
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
     </head>
 
     <body>
@@ -460,7 +464,37 @@
                     communities in software. Start small, write a few scripts, and you'll be building real applications in
                     no time.</p>
 
-
+                <div class="posts-section">
+                    @if (isset($posts) && count($posts) > 0)
+                        <div class="section-gap">
+                            <p class="section-label">More articles</p>
+                            <div class="news-grid">
+                                @foreach ($posts as $post)
+                                    <a href="{{ url('/news/' . $post->slug)}}" class="post-link">
+                                        <div class="news-card">
+                                            <div class="news-card-thumb">
+                                                @if ($post->image)
+                                                    <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
+                                                @else
+                                                    <span class="material-symbols-outlined placeholder-icon">article</span>
+                                                @endif
+                                            </div>
+                                            <div class="news-card-body">
+                                                <p class="news-card-tag">Article</p>
+                                                <p class="news-card-title">{{ $post->title }}</p>
+                                                <p class="news-card-excerpt">{{ Str::limit($post->body, 80) }}</p>
+                                                <p class="news-card-meta">
+                                                    {{ $post->user->name ?? 'Unknown' }} ·
+                                                    {{ $post->created_at->format('d M Y') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </article>
         </div>
         @if (isset($posts) && count($posts) > 0)
@@ -492,6 +526,7 @@
                 </div>
             </div>
         @endif
+
 
     </body>
 

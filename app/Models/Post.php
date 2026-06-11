@@ -9,11 +9,18 @@ class Post extends Model
 {
     protected $fillable = [
         'user_id',
+<<<<<<< HEAD
         'featured_image',
+=======
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
         'title',
         'slug',
         'body',
         'image',
+<<<<<<< HEAD
+=======
+        'category',
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
         'status',
         'views',
         'published_at',

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿@extends('layout')
+=======
+﻿{{-- @extends('layout')
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
 @section('title', 'All Posts')
 @section('content')
 
@@ -173,4 +177,8 @@
         @endif
     </div>
 
+<<<<<<< HEAD
 @endsection
+=======
+@endsection --}}
+>>>>>>> cee8697e9ba19fb2b747be2ef3a1b4e160b17010
