@@ -34,6 +34,131 @@
                 max-width: 720px;
             }
 
+            /* ── GRID (remaining posts) ── */
+            .section-label {
+                font-family: 'DM Mono', monospace;
+                font-size: 11px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--text-3);
+                margin-bottom: 1rem;
+            }
+
+            .section-gap {
+                margin-top: 2.5rem;
+            }
+
+            .news-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.25rem;
+            }
+
+            @media (max-width: 900px) {
+                .news-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (max-width: 560px) {
+                .news-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .news-card {
+                background: var(--bg-soft);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                transition: box-shadow 0.2s, transform 0.2s;
+                text-decoration: none;
+            }
+
+            .news-card:hover {
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+                transform: translateY(-2px);
+            }
+
+            .news-card-thumb {
+                height: 160px;
+                overflow: hidden;
+                background: linear-gradient(135deg, #eff6ff, #dbeafe);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .news-card-thumb img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .news-card-thumb .placeholder-icon {
+                font-size: 40px;
+                color: #d1d5db;
+            }
+
+            .news-card-body {
+                padding: 1.1rem;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+            }
+
+            .news-card-tag {
+                font-family: 'DM Mono', monospace;
+                font-size: 10.5px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--blue);
+            }
+
+            .news-card-title {
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--text);
+                line-height: 1.4;
+                flex: 1;
+            }
+
+            .news-card-excerpt {
+                font-size: 12px;
+                color: var(--text-2);
+                line-height: 1.5;
+            }
+
+            .news-card-meta {
+                font-family: 'DM Mono', monospace;
+                font-size: 11px;
+                color: var(--text-3);
+                margin-top: 0.5rem;
+            }
+
+            /* ── EMPTY STATE ── */
+            .empty-posts {
+                text-align: center;
+                padding: 4rem 1rem;
+                color: var(--text-3);
+            }
+
+            .empty-posts .material-symbols-outlined {
+                font-size: 48px;
+                display: block;
+                margin-bottom: 1rem;
+                color: var(--border);
+            }
+
+            .empty-posts p {
+                font-size: 14px;
+            }
+
+            
+
             /* Tags */
             .tags {
                 display: flex;
@@ -338,6 +463,35 @@
 
             </article>
         </div>
+        @if (isset($posts) && count($posts) > 0)
+            <div class="section-gap">
+                <p class="section-label">More articles</p>
+                <div class="news-grid">
+                    @foreach ($posts->skip(1) as $post)
+                        <a href="{{ url('/news/' . $post->slug)}}" class="post-link">
+                            <div class="news-card">
+                                <div class="news-card-thumb">
+                                    @if ($post->image)
+                                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
+                                    @else
+                                        <span class="material-symbols-outlined placeholder-icon">article</span>
+                                    @endif
+                                </div>
+                                <div class="news-card-body">
+                                    <p class="news-card-tag">Article</p>
+                                    <p class="news-card-title">{{ $post->title }}</p>
+                                    <p class="news-card-excerpt">{{ Str::limit($post->body, 80) }}</p>
+                                    <p class="news-card-meta">
+                                        {{ $post->user->name ?? 'Unknown' }} ·
+                                        {{ $post->created_at->format('d M Y') }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        @endif
 
     </body>
 
