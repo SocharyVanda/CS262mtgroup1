@@ -1,4 +1,4 @@
-<?php
+php artisan migrate --path=C:\Users\stain\Herd\Cs262MtGroup1\database<?php
 // database/migrations/2024_06_03_000001_create_posts_table.php
 
 use Illuminate\Database\Migrations\Migration;

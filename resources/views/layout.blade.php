@@ -12,6 +12,8 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
 </head>
@@ -35,6 +37,18 @@
             <a class="nav-link" href="/posts">Posts</a>
             <a class="nav-link" href="/signup">Sign up</a>
             <a class="nav-btn" href="/dashboard">Dashboard</a>
+            <div class="dropdown custom-nav-dropdown">
+    <button class="nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Courses
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="http://cs262mtgroup1.test/science">Science</a></li>
+        <li><a class="dropdown-item" href="http://cs262mtgroup1.test/technology">Technology</a></li>
+        <li><a class="dropdown-item" href="http://cs262mtgroup1.test/engineering">Engineering</a></li>
+        <li><a class="dropdown-item" href="http://cs262mtgroup1.test/mathematics">Mathematics</a></li>
+    </ul>
+</div>
+
         </div>
     </nav>
 
