@@ -24,21 +24,13 @@ class PostController extends Controller
             'title' => 'required',
             'body' => 'required',
             'featured_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
-
         ]);
 
-        $fields['title']   = strip_tags($fields['title']);
-        $fields['body']    = strip_tags($fields['body']);
-        $fields['user_id'] = Auth::id();
-        $fields['slug']    = Str::slug($fields['title']) . '-' . uniqid();
-        $fields['status']  = 'published';
-
-        if ($request->hasFile('image')) {
-            $fields['image'] = $request->file('image')->store('posts', 'public');
-        }
-
-        Post::create($fields);
-
+        $incomingFields['title'] = strip_tags($incomingFields['title']);
+        $incomingFields['body'] = strip_tags($incomingFields['body']);
+        $incomingFields['user_id'] = Auth::id();
+        $incomingFields['slug'] = Str::slug($incomingFields['title']) . '-' . uniqid();
+        $incomingFields['status'] = 'published';
 
         if ($request->hasFile('featured_image')) {
             $incomingFields['featured_image'] =
@@ -47,6 +39,7 @@ class PostController extends Controller
         }
 
         Post::create($incomingFields);
+
         return redirect('/dashboard');
     }
 
