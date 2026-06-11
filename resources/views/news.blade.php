@@ -13,7 +13,7 @@
     </div>
 
     <!-- FILTER BAR -->
-    <div class="filter-bar">
+    {{-- <div class="filter-bar">
         <a class="filter-btn active" href="#">All</a>
         <a class="filter-btn" href="#">Science</a>
         <a class="filter-btn" href="#">Technology</a>
@@ -21,7 +21,7 @@
         <a class="filter-btn" href="#">Mathematics</a>
         <a class="filter-btn" href="#">Environment</a>
         <a class="filter-btn" href="#">Health</a>
-    </div>
+    </div> --}}
 
     <!-- FEATURED ARTICLE -->
     <a class="featured-article" href="#">
