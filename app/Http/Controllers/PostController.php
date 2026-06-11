@@ -19,6 +19,7 @@ class PostController extends Controller
         $fields = $request->validate([
             'title' => 'required|string|max:255',
             'body'  => 'required|string',
+            'category' => 'required|string|in:Mathematics,Science,Engineering,Technology',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
@@ -55,6 +56,7 @@ class PostController extends Controller
         $fields = $request->validate([
             'title' => 'required|string|max:255',
             'body'  => 'required|string',
+            'category' => 'required|string|in:Mathematics,Science,Engineering,Technology',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 

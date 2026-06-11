@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+.db-root {
+    font-family: 'Instrument Sans', sans-serif;
+    background: #fff;
+    color: #0f1117;
+    min-height: calc(100vh - var(--nav-h, 60px));
+    position: relative;
+    overflow: hidden;
+}
+
+.db-gridbg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.db-glow {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 300px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.db-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+@media (max-width: 780px) {
+    .db-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .db-sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .db-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* ── SIDEBAR ── */
+.db-sidebar {
+    position: sticky;
+    top: calc(60px + 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.db-profile {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.db-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    border: 2px solid rgba(37, 99, 235, 0.15);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+}
+
+.db-pname {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f1117;
+    margin-bottom: 2px;
+}
+
+.db-pemail {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: #9ca3af;
+    margin-bottom: 0.6rem;
+}
+
+.db-pbadge {
+    display: inline-block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2563eb;
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 3px 10px;
+    border-radius: 100px;
+}
+
+.db-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.db-navitem {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 13px;
+    color: #6b7280;
+    padding: 0.55rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    transition: color 0.15s, background 0.15s;
+    font-family: 'Instrument Sans', sans-serif;
+}
+
+.db-navitem:hover {
+    color: #0f1117;
+    background: #f9fafb;
+}
+
+.db-navitem.active {
+    color: #2563eb;
+    background: rgba(59, 130, 246, 0.08);
+    font-weight: 500;
+}
+
+.db-navitem.danger {
+    color: #b91c1c;
+}
+
+.db-navitem.danger:hover {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.nav-ic {
+    font-size: 16px;
+    width: 17px;
+    flex-shrink: 0;
+}
+
+.db-nav-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 4px 0;
+}
+
+/* ── MAIN ── */
+.db-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.db-section {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.db-section.visible {
+    display: flex;
+}
+
+/* ── PANEL ── */
+.panel {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.panel-hd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.25rem;
+    border-bottom: 1px solid #e5e7eb;
+    position: relative;
+}
+
+.panel-hd::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: #2563eb;
+}
+
+.panel-htitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 12px;
+    font-weight: 500;
+    color: #0f1117;
+}
+
+.panel-htitle .material-symbols-outlined {
+    font-size: 16px;
+    color: #2563eb;
+}
+
+.panel-badge {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    color: #9ca3af;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 100px;
+    padding: 2px 8px;
+}
+
+.panel-bd {
+    padding: 1.25rem;
+}
+
+/* ── STATS ── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.stat-card {
+    background: rgba(59, 130, 246, 0.04);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.stat-lbl {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 0.3rem;
+}
+
+.stat-val {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #2563eb;
+    line-height: 1;
+}
+
+.stat-sub {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-top: 0.25rem;
+}
+
+/* ── POST LIST ── */
+.post-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1.25rem;
+    border-bottom: 1px solid #f3f4f6;
+    transition: background 0.15s;
+}
+
+.post-row:last-child {
+    border-bottom: none;
+}
+
+.post-row:hover {
+    background: #fafafa;
+}
+
+.post-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.post-title {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #0f1117;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.post-preview {
+    font-size: 12px;
+    color: #9ca3af;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 3px;
+}
+
+.post-meta {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    color: #d1d5db;
+}
+
+.post-acts {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.btn-ic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background: #fff;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+.btn-ic:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: rgba(59, 130, 246, 0.06);
+}
+
+.btn-ic.del:hover {
+    border-color: #fca5a5;
+    color: #b91c1c;
+    background: #fef2f2;
+}
+
+/* ── EMPTY STATE ── */
+.empty-state {
+    padding: 2.5rem 1.25rem;
+    text-align: center;
+}
+
+.empty-state .material-symbols-outlined {
+    font-size: 32px;
+    color: #e5e7eb;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* ── CREATE FORM ── */
+.form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.f-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.f-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9ca3af;
+}
+
+.stem-input {
+    width: 100%;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 13px;
+    color: #0f1117;
+    font-family: 'Instrument Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    box-sizing: border-box;
+}
+
+.stem-input::placeholder {
+    color: #d1d5db;
+}
+
+.stem-input:focus {
+    background: #fff;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-footer-right {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+}
+
+.btn-stem {
+    padding: 9px 18px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Instrument Sans', sans-serif;
+    transition: opacity 0.15s;
+}
+
+.btn-stem:hover {
+    opacity: 0.87;
+}
+
+/* ── ALERT ── */
+.alert-stem {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #b91c1c;
+    margin-bottom: 12px;
+}
+
+.alert-stem ul {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+/* ── SETTINGS ── */
+.srow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1.25rem;
+    border-bottom: 1px solid #f3f4f6;
+    gap: 1rem;
+}
+
+.srow:last-child {
+    border-bottom: none;
+}
+
+.skey {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #9ca3af;
+    width: 90px;
+    flex-shrink: 0;
+}
+
+.sval {
+    font-size: 13px;
+    color: #0f1117;
+    flex: 1;
+}
+
+.sedit {
+    font-size: 12px;
+    color: #2563eb;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.sedit:hover {
+    text-decoration: underline;
+}
+
+/* ── DANGER ZONE ── */
+.danger-zone-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-danger {
+    padding: 8px 16px;
+    background: #b91c1c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Instrument Sans', sans-serif;
+}

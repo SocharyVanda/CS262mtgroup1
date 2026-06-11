@@ -1,4 +1,4 @@
-﻿@extends('layout')
+﻿{{-- @extends('layout')
 @section('title', 'All Posts')
 @section('content')
 
@@ -173,4 +173,4 @@
         @endif
     </div>
 
-@endsection
+@endsection --}}

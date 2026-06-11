@@ -1,356 +1,7 @@
 @extends('layout')
 @section('title', 'Posts')
 @section('content')
-
-    <style>
-        .page-wrap {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem 5rem;
-        }
-
-        .page-header {
-            margin-bottom: 2.5rem;
-        }
-
-        .page-eyebrow {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-3);
-            margin-bottom: 0.4rem;
-        }
-
-        .page-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        /* ── FILTER BAR ── */
-        .filter-bar {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .filter-btn {
-            font-size: 12.5px;
-            font-weight: 500;
-            color: var(--text-2);
-            background: var(--bg-soft);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 0.3rem 0.9rem;
-            cursor: pointer;
-            transition: all 0.15s;
-            text-decoration: none;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            color: var(--blue);
-            border-color: var(--blue);
-            background: var(--blue-lt);
-        }
-
-        /* ── FEATURED (first post) ── */
-        .featured-article {
-            background: var(--bg-soft);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr 420px;
-            margin-bottom: 2rem;
-            transition: box-shadow 0.2s;
-        }
-
-        .featured-article:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-        }
-
-        @media (max-width: 780px) {
-            .featured-article {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .featured-img {
-            min-height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #e8f5ee 0%, #dbeafe 100%);
-            order: 2;
-            overflow: hidden;
-        }
-
-        .featured-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .featured-img .placeholder-icon {
-            font-size: 64px;
-            color: #d1d5db;
-        }
-
-        @media (max-width: 780px) {
-            .featured-img {
-                min-height: 180px;
-                order: 0;
-            }
-        }
-
-        .featured-body {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 0.75rem;
-        }
-
-        .article-tag {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--blue);
-            font-weight: 500;
-        }
-
-        .article-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text);
-            line-height: 1.35;
-            text-decoration: none;
-        }
-
-        .article-title:hover {
-            color: var(--blue);
-        }
-
-        .article-excerpt {
-            font-size: 14px;
-            color: var(--text-2);
-            line-height: 1.6;
-        }
-
-        .article-meta {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            color: var(--text-3);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--blue);
-            text-decoration: none;
-            margin-top: 0.25rem;
-            width: fit-content;
-        }
-
-        .read-more:hover {
-            text-decoration: underline;
-        }
-
-        /* ── GRID (remaining posts) ── */
-        .section-label {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-3);
-            margin-bottom: 1rem;
-        }
-
-        .section-gap {
-            margin-top: 2.5rem;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-
-        @media (max-width: 900px) {
-            .news-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 560px) {
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .news-card {
-            background: var(--bg-soft);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: box-shadow 0.2s, transform 0.2s;
-            text-decoration: none;
-        }
-
-        .news-card:hover {
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
-            transform: translateY(-2px);
-        }
-
-        .news-card-thumb {
-            height: 160px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .news-card-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .news-card-thumb .placeholder-icon {
-            font-size: 40px;
-            color: #d1d5db;
-        }
-
-        .news-card-body {
-            padding: 1.1rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .news-card-tag {
-            font-family: 'DM Mono', monospace;
-            font-size: 10.5px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--blue);
-        }
-
-        .news-card-title {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text);
-            line-height: 1.4;
-            flex: 1;
-        }
-
-        .news-card-excerpt {
-            font-size: 12px;
-            color: var(--text-2);
-            line-height: 1.5;
-        }
-
-        .news-card-meta {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            color: var(--text-3);
-            margin-top: 0.5rem;
-        }
-
-        /* ── EMPTY STATE ── */
-        .empty-posts {
-            text-align: center;
-            padding: 4rem 1rem;
-            color: var(--text-3);
-        }
-
-        .empty-posts .material-symbols-outlined {
-            font-size: 48px;
-            display: block;
-            margin-bottom: 1rem;
-            color: var(--border);
-        }
-
-        .empty-posts p {
-            font-size: 14px;
-        }
-
-        /* ── NEWSLETTER ── */
-        .newsletter-bar {
-            background: var(--blue);
-            border-radius: 12px;
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-
-        .newsletter-text h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.2rem;
-        }
-
-        .newsletter-text p {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.75);
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .newsletter-input {
-            font-size: 13.5px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            padding: 0.5rem 1rem;
-            color: #fff;
-            outline: none;
-            min-width: 220px;
-        }
-
-        .newsletter-input::placeholder {
-            color: rgba(255, 255, 255, 0.55);
-        }
-
-        .newsletter-btn {
-            font-size: 13px;
-            font-weight: 500;
-            background: #fff;
-            color: var(--blue);
-            border: none;
-            border-radius: 6px;
-            padding: 0.5rem 1.1rem;
-            cursor: pointer;
-        }
-
-        .newsletter-btn:hover {
-            opacity: 0.9;
-        }
-    </style>
+<link rel="stylesheet" href="{{ asset('css/post.css') }}">
 
     <div class="page-wrap">
 
@@ -361,14 +12,13 @@
         </div>
 
         <!-- FILTER BAR -->
+        @php $selectedCategory = $category ?? null; @endphp
         <div class="filter-bar">
-            <a class="filter-btn active" href="#">All</a>
-            <a class="filter-btn" href="#">Science</a>
-            <a class="filter-btn" href="#">Technology</a>
-            <a class="filter-btn" href="#">Engineering</a>
-            <a class="filter-btn" href="#">Mathematics</a>
-            <a class="filter-btn" href="#">Environment</a>
-            <a class="filter-btn" href="#">Health</a>
+            <a class="filter-btn {{ !$selectedCategory ? 'active' : '' }}" href="{{ url('/posts') }}">All</a>
+            <a class="filter-btn {{ $selectedCategory === 'Science' ? 'active' : '' }}" href="{{ url('/posts?category=Science') }}">Science</a>
+            <a class="filter-btn {{ $selectedCategory === 'Technology' ? 'active' : '' }}" href="{{ url('/posts?category=Technology') }}">Technology</a>
+            <a class="filter-btn {{ $selectedCategory === 'Engineering' ? 'active' : '' }}" href="{{ url('/posts?category=Engineering') }}">Engineering</a>
+            <a class="filter-btn {{ $selectedCategory === 'Mathematics' ? 'active' : '' }}" href="{{ url('/posts?category=Mathematics') }}">Mathematics</a>
         </div>
 
         @if (isset($posts) && count($posts) > 0)
@@ -386,7 +36,7 @@
                 </div>
                 <div class="featured-body">
                     <p class="article-tag">Featured</p>
-                    <a href="#" class="article-title">{{ $featured->title }}</a>
+                    <a href="{{ url('/news/' .$featured->slug) }}" class="article-title">{{ $featured->title }}</a>
                     <p class="article-excerpt">{{ Str::limit($featured->body, 160) }}</p>
                     <div class="article-meta">
                         <span>{{ $featured->user->name ?? 'Unknown' }}</span>
@@ -402,6 +52,7 @@
                     <p class="section-label">More articles</p>
                     <div class="news-grid">
                         @foreach ($posts->skip(1) as $post)
+                        <a href="{{ url('/news/' .$post->slug) }}">
                             <div class="news-card">
                                 <div class="news-card-thumb">
                                     @if ($post->image)
@@ -420,6 +71,7 @@
                                     </p>
                                 </div>
                             </div>
+                        </a>
                         @endforeach
                     </div>
                 </div>
