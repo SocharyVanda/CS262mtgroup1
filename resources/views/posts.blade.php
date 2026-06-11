@@ -42,7 +42,7 @@
                         <span>{{ $featured->user->name ?? 'Unknown' }}</span>
                         <span>{{ $featured->created_at->format('d M Y') }}</span>
                     </div>
-                    <a href="#" class="read-more">Read article →</a>
+                    <a href="{{ url('/news/' .$featured->slug) }}" class="read-more">Read article →</a>
                 </div>
             </div>
 
