@@ -85,7 +85,7 @@
         @endif
 
         <!-- NEWSLETTER -->
-        <div class="newsletter-bar">
+        {{-- <div class="newsletter-bar">
             <div class="newsletter-text">
                 <h3>Stay up to date</h3>
                 <p>Get the latest STEM articles delivered to your inbox.</p>
@@ -94,7 +94,7 @@
                 <input class="newsletter-input" type="email" placeholder="your@email.com">
                 <button class="newsletter-btn">Subscribe</button>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 
