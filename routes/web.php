@@ -4,8 +4,8 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
-
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PostController;
 
 Route::get('/', fn() => view('homepage'));
 Route::get('/signup', fn() => view('signup'));
@@ -35,6 +35,24 @@ Route::get('/dashboard', function () {
 Route::get('/posts', function () {
     $posts = Post::with('user')->latest()->get();
     return view('posts', compact('posts'));
+});
+
+Route::get('/mathematics', function () {
+    $posts = Post::with('user')->latest()->get();
+    return view('mathematics', compact('posts'));
+});
+
+// Route::get('/display', function () {
+//     $posts = Post::with('user')->latest()->get();
+//     return view('display', compact('posts'));
+// });
+
+// Route::get('/display/{post:slug}', function (App\Models\Post $post) {
+//     return view('each', compact('post'));
+// });
+
+Route::get('/news/{post:slug}', function (App\Models\Post $post) {
+    return view('each', compact('post'));
 });
 
 // Route::get('/news', function () {
