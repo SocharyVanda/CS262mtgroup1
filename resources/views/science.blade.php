@@ -1,111 +1,87 @@
 @extends('layout')
-@section('title', 'Cell Biology: The Building Blocks of Life - STEM Cambodia')
+@section('title', 'Science - STEM Cambodia')
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/pillar.css') }}">
+<link rel="stylesheet" href="{{ asset('css/pillar.css') }}">
 
-    <div class="page-wrapper">
-        <article class="article">
-
-            {{-- Tags --}}
-            <div class="tags">
-                <span class="tag tag-science">Science</span>
-                <span class="tag tag-beginner">Beginner</span>
-                <span class="read-time">7 min read</span>
-            </div>
-
-            {{-- Title --}}
-            <h1>Cell Biology: The Building Blocks of Life</h1>
-
-            {{-- Meta --}}
-            <div class="meta">
-                <span>By <span class="author">Admin</span> &nbsp;·&nbsp; June 2025</span>
-                <span class="bookmark-icon">🔖</span>
-            </div>
-
-            {{-- Intro paragraph --}}
-            <p>
-                The cell is the fundamental unit of life. Every living organism — from the simplest bacterium
-                to a complex human — is made of cells. Understanding cells is the foundation of all biology.
+{{-- HERO --}}
+<div class="pillar-hero">
+    <div class="pillar-hero-inner">
+        <div class="pillar-hero-text">
+            <span class="pillar-tag">Science</span>
+            <h1>What is <span class="accent">Science?</span></h1>
+            <p class="pillar-lead">
+                The systematic study of the natural world through observation and experimentation — spanning biology, chemistry, physics, and environmental science.
             </p>
-
-            {{-- Tip box --}}
-            <div class="tip-box">
-                <span class="tip-icon">🔬</span>
-                The average human body contains approximately 37 trillion cells, each performing specialised
-                functions to keep you alive.
-            </div>
-
-            {{-- Key Concepts --}}
-            <h2>Key Concepts</h2>
-
-            <p>There are two primary types of cells:</p>
-
-            <ul>
-                <li><strong>Prokaryotic cells</strong> — simple cells without a nucleus (bacteria, archaea)</li>
-                <li><strong>Eukaryotic cells</strong> — complex cells with a membrane-bound nucleus (plants, animals, fungi)
-                </li>
-            </ul>
-
-            {{-- How It Works --}}
-            <h2>How It Works</h2>
-
-            <p>Every cell contains organelles — specialised structures that carry out specific functions:</p>
-
-            <ul>
-                <li><strong>Nucleus</strong> — contains DNA and controls cell activity</li>
-                <li><strong>Mitochondria</strong> — produces energy (ATP) through cellular respiration</li>
-                <li><strong>Ribosome</strong> — synthesises proteins</li>
-                <li><strong>Cell membrane</strong> — controls what enters and exits the cell</li>
-            </ul>
-
-            {{-- Applications --}}
-            <h2>Applications</h2>
-
-            <p>
-                Cell biology underpins modern medicine. Understanding how cells divide (mitosis and meiosis),
-                communicate, and die (apoptosis) is essential for understanding cancer, genetic diseases,
-                and developing new treatments.
-            </p>
-
-            {{-- Summary --}}
-            <h2>Summary</h2>
-
-            <p>
-                Cells are not just building blocks — they are living machines. Every process in your body,
-                from thinking to digesting food, comes down to what's happening inside individual cells.
-            </p>
-            <div class="posts-section">
-                @if (isset($posts) && count($posts) > 0)
-                    <div class="section-gap">
-                        <p class="section-label">More articles</p>
-                        <div class="news-grid">
-                            @foreach ($posts as $post)
-                                <a href="{{ url('/news/' . $post->slug)}}" class="post-link">
-                                    <div class="news-card">
-                                        <div class="news-card-thumb">
-                                            @if ($post->image)
-                                                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
-                                            @else
-                                                <span class="material-symbols-outlined placeholder-icon">article</span>
-                                            @endif
-                                        </div>
-                                        <div class="news-card-body">
-                                            <p class="news-card-tag">Article</p>
-                                            <p class="news-card-title">{{ $post->title }}</p>
-                                            <p class="news-card-excerpt">{{ Str::limit($post->body, 80) }}</p>
-                                            <p class="news-card-meta">
-                                                {{ $post->user->name ?? 'Unknown' }} ·
-                                                {{ $post->created_at->format('d M Y') }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-            </div>
-        </article>
+        </div>
+        <div class="pillar-hero-img">
+            <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80" alt="Science laboratory">
+        </div>
     </div>
+</div>
+
+{{-- CONTENT --}}
+<div class="pillar-content">
+
+    <div class="content-section">
+        <h2>Why is Science Important?</h2>
+        <p>
+            Science is a fundamental component of STEM education, playing a crucial role in developing critical thinking, problem-solving skills, and innovation necessary for addressing real-world challenges. It underpins every other STEM discipline and drives progress in medicine, technology, and our understanding of the universe.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>Career in Science</h2>
+        <p>
+            Science careers often involve research, data analysis, hypothesis testing, and study design. You may work in a laboratory, university, government agency, or private corporation — seeking gaps in knowledge and testing hypotheses to fill them.
+        </p>
+        <div class="career-grid">
+            <div class="career-pill">Biochemist</div>
+            <div class="career-pill">Microbiologist</div>
+            <div class="career-pill">Epidemiologist</div>
+            <div class="career-pill">Zoologist</div>
+            <div class="career-pill">Environmental Scientist</div>
+            <div class="career-pill">Organic Chemist</div>
+        </div>
+        <div class="tip-box">
+            Common entry-level education: Bachelor's degree in biology, chemistry, physics, or a related field. Certain careers may require advanced degrees with specialization in the intended area.
+        </div>
+    </div>
+
+</div>
+
+{{-- ARTICLES --}}
+<div class="articles-section">
+    <div class="articles-inner">
+        @if (isset($posts) && count($posts) > 0)
+            <span class="section-label">More articles</span>
+            <div class="news-grid">
+                @foreach ($posts as $post)
+                    <a href="{{ url('/news/' . $post->slug) }}" class="news-card">
+                        <div class="news-card-thumb">
+                            @if ($post->image)
+                                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
+                            @else
+                                <span class="material-symbols-outlined placeholder-icon">article</span>
+                            @endif
+                        </div>
+                        <div class="news-card-body">
+                            <p class="news-card-tag">Article</p>
+                            <p class="news-card-title">{{ $post->title }}</p>
+                            <p class="news-card-excerpt">{{ Str::limit($post->body, 80) }}</p>
+                            <p class="news-card-meta">
+                                {{ $post->user->name ?? 'Unknown' }} ·
+                                {{ $post->created_at->format('d M Y') }}
+                            </p>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        @else
+            <div class="empty-posts">
+                <p>No articles yet.</p>
+            </div>
+        @endif
+    </div>
+</div>
 
 @endsection
