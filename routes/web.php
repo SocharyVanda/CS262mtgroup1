@@ -15,7 +15,6 @@ Route::get('/signup', fn() => view('signup'));
 // Route::get('/engineering', fn() => view('engineering'));
 Route::get('/aboutus', fn() => view('aboutus'));
 Route::get('/news', [NewsController::class, 'index']);
-Route::get('/bookmarks', fn() => view('bookmarks'));
 
 // ── AUTH ──
 Route::post('/register', [AuthController::class, 'register']);

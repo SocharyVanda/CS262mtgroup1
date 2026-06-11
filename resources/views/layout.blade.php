@@ -68,7 +68,6 @@
                 <h4>Navigate</h4>
                 <a href="/">Home</a>
                 <a href="/news">News & events</a>
-                <a href="/bookmarks">Bookmarks</a>
             </div>
             <div class="footer-col">
                 <h4>Subjects</h4>
