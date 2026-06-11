@@ -1,5 +1,4 @@
-@extends('layout')
-
+@extends('layouts.layout')
 @section('title', 'STEM Cambodia - Edit Post')
 
 @section('content')
