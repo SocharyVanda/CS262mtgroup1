@@ -1,15 +1,15 @@
 <?php
-// app/Models/User.php
 
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;  // <-- add this
 use App\Models\Post;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasFactory, Notifiable;  // <-- add HasFactory here
 
     protected $fillable = [
         'name',

@@ -8,7 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\NewsController;
 
 Route::get('/', fn() => view('pages.homepage'));
-Route::get('/signup', fn() => view('pages.signup'));
+Route::get('/signup', fn() => view('auth.signup'));
 Route::get('/science', fn() => view('categories.science'));
 Route::get('/technology', fn() => view('categories.technology'));
 Route::get('/mathematics', fn() => view('categories.mathematics'));
@@ -37,13 +37,13 @@ Route::get('/posts', function () {
     return view('pages.posts', compact('posts'));
 });
 
-// Route::get('/news', function () {
-//     $news = Post::with('user')->latest()->get();
-//     return view('posts', compact('news'));
-// });
+Route::get('/news', function () {
+    $news = Post::with('user')->latest()->get();
+    return view('pages.news', compact('news'));
+});
 
 // web.php
-Route::get('/news', [NewsController::class, 'index']);
+Route::get('/pages.news', [NewsController::class, 'index']);
 
 
 // ── POST CRUD ──
